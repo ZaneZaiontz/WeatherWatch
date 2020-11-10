@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="800.0" maxWidth="800.0" minHeight="800.0" minWidth="800.0" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MenuController">
+   <children>
+      <ImageView fitHeight="900.0" fitWidth="1350.0" layoutX="-265.0" layoutY="-41.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../resources/images/TempBG.png" />
+         </image>
+      </ImageView>
+      <BorderPane fx:id="mainPane" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox prefHeight="50.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#handleButton1Action" opacity="0.5" prefHeight="50.0" prefWidth="200.0" text="Forecast" />
+                  <Button mnemonicParsing="false" onAction="#handleButton2Action" opacity="0.5" prefHeight="50.0" prefWidth="200.0" text="Radar" />
+                  <Button mnemonicParsing="false" onAction="#handleButton3Action" opacity="0.5" prefHeight="50.0" prefWidth="200.0" text="History" />
+                  <Button mnemonicParsing="false" onAction="#handleButton4Action" opacity="0.5" prefHeight="50.0" prefWidth="200.0" text="Location" />
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </HBox>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
