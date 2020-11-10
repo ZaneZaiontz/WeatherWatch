@@ -1,6 +1,6 @@
 package application.controller;
 
-import javafx.fxml.FXMLLoader; 
+import javafx.fxml.FXMLLoader;  
 import javafx.event.ActionEvent; 
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
@@ -15,6 +15,15 @@ public class MenuController {
 	@FXML
 	private Pane view;
 	
+	public void initialize(){
+		try{
+			URL fileUrl = Main.class.getResource("/application/view/Forecast.fxml");
+			new FXMLLoader();
+			view = FXMLLoader.load(fileUrl);
+			mainPane.setCenter(view);
+			}catch(Exception e){}
+	}
+	
 	@FXML
 	private void handleButton1Action(ActionEvent event){
 		try{
@@ -25,8 +34,7 @@ public class MenuController {
 			}catch(Exception e){}
 		
 	}
-	
-	
+
 	@FXML
 	private void handleButton2Action(ActionEvent event){
 		try{

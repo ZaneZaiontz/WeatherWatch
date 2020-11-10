@@ -18,10 +18,38 @@
          <top>
             <HBox prefHeight="50.0" prefWidth="800.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#handleButton1Action" opacity="0.5" prefHeight="50.0" prefWidth="200.0" text="Forecast" />
-                  <Button mnemonicParsing="false" onAction="#handleButton2Action" opacity="0.5" prefHeight="50.0" prefWidth="200.0" text="Radar" />
-                  <Button mnemonicParsing="false" onAction="#handleButton3Action" opacity="0.5" prefHeight="50.0" prefWidth="200.0" text="History" />
-                  <Button mnemonicParsing="false" onAction="#handleButton4Action" opacity="0.5" prefHeight="50.0" prefWidth="200.0" text="Location" />
+                  <Button maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#handleButton1Action" opacity="0.5" prefHeight="50.0" prefWidth="200.0">
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/HomeImg.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#handleButton2Action" opacity="0.5" prefHeight="50.0" prefWidth="200.0">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/RadarImg.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#handleButton3Action" opacity="0.5" prefHeight="50.0" prefWidth="200.0">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/NewsIcon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
+                  <Button maxHeight="50.0" maxWidth="200.0" minHeight="50.0" minWidth="200.0" mnemonicParsing="false" onAction="#handleButton4Action" opacity="0.5" prefHeight="50.0" prefWidth="200.0">
+                     <graphic>
+                        <ImageView fitHeight="40.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/SearchImg.png" />
+                           </image>
+                        </ImageView>
+                     </graphic></Button>
                </children>
                <BorderPane.margin>
                   <Insets />
