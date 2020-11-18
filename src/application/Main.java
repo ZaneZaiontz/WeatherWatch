@@ -12,7 +12,7 @@ import javafx.scene.Scene;
 * 
 *  @author Gabrielle Albrecht/ypo253
 *  @author Dariel Malave Perez
-*  @author Robert Taylor/this is a comment
+*  @author Robert Taylor/this is a comment this is a comment
 *  @author Jina Wilde
 *  @author Zane Zaiontz
 *  
