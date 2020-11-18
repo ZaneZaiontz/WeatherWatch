@@ -7,7 +7,6 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-// test from Jina
 
 /**
 * The Main class launches the application and sets up MainController.fxml.
