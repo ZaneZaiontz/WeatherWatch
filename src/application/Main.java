@@ -1,14 +1,11 @@
 package application;
 
-import application.controller.MenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-
-// :)))))))))))))))))))))))))))))))))))))))))
 
 /**
 * The Main class launches the application and sets up MainController.fxml.
@@ -30,10 +27,6 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Menu.fxml"));
 			Parent root = loader.load();
 			primaryStage.setTitle("Weather Watch");
-
-			MenuController mC = loader.getController();
-			mC.initialize();
-
 			Scene scene = new Scene(root, 800,800);
 			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);

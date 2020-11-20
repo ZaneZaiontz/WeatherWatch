@@ -1,5 +1,7 @@
 package application.controller;
 
+import java.io.IOException;
+
 import application.model.WeatherWatch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,14 +17,21 @@ public class LocationController {
 	@FXML
 	Button submit;
 	
+	private WeatherWatch w = new WeatherWatch(); 
+	
 	public void initialize(){
-		label.setText("Location");
+		try{
+			w.loadFile();
+			label.setText(w.getCityName());
+		}catch(IOException e){}
 	}
 	
-	public void handle(ActionEvent e) {
-		WeatherWatch.cityName = city.getText();
-		label.setText(city.getText());
-		WeatherWatch.analyze();
+	public void handle(ActionEvent a) {
+		try{
+			w.setCityName(city.getText());
+			label.setText(city.getText());
+			w.save();
+		}catch(IOException e){}
 	}
 
 }

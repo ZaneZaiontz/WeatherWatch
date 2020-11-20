@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.fxml.*;
 import java.net.URL;
 import application.Main;
+import application.model.WeatherWatch;
  
 public class MenuController {  
 	
