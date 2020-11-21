@@ -27,7 +27,7 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Menu.fxml"));
 			Parent root = loader.load();
 			primaryStage.setTitle("Weather Watch");
-			Scene scene = new Scene(root, 800,800);
+			Scene scene = new Scene(root);
 			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
 			primaryStage.show();
