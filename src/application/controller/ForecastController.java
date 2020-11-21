@@ -14,12 +14,12 @@ public class ForecastController {
 	private BorderPane mainPane;
 	@FXML
 	private Pane view;
-	@FXML
-	Label label;
+	//@FXML
+	//Label label;
 	
 	public void initialize(){
 		try{
-		label.setText("Forecast"); 
+		//label.setText("Forecast"); 
 		WeatherWatch w = new WeatherWatch();
 		w.loadFile();
 		w.analyzeCurrent();

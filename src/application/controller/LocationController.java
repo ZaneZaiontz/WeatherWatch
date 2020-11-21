@@ -10,8 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class LocationController {
-	@FXML
-	Label label;
+	//@FXML
+	//Label label;
 	@FXML
 	TextField city;
 	@FXML
@@ -22,14 +22,14 @@ public class LocationController {
 	public void initialize(){
 		try{
 			w.loadFile();
-			label.setText(w.getCityName());
+			//label.setText(w.getCityName());
 		}catch(IOException e){}
 	}
 	
 	public void handle(ActionEvent a) {
 		try{
 			w.setCityName(city.getText());
-			label.setText(city.getText());
+			//label.setText(city.getText());
 			w.save();
 		}catch(IOException e){}
 	}

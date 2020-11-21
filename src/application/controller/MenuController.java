@@ -32,7 +32,7 @@ public class MenuController {
 			new FXMLLoader();
 			view = FXMLLoader.load(fileUrl);
 			mainPane.setCenter(view);
-			}catch(Exception e){}
+			}catch(Exception e){e.printStackTrace();}
 		
 	}
 

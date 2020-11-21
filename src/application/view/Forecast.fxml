@@ -1,13 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="800.0" maxWidth="800.0" minHeight="800.0" minWidth="800.0" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ForecastController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ForecastController">
    <children>
-      <Label fx:id="label" alignment="CENTER" layoutY="100.0" maxWidth="800.0" minWidth="800.0" prefWidth="800.0" textAlignment="CENTER" textFill="BLACK" />
+      <FlowPane fx:id="weatherFore" layoutX="100.0" layoutY="500.0" prefHeight="200.0" prefWidth="1000.0" AnchorPane.bottomAnchor="100.0" />
+      <BorderPane layoutX="500.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="200.0" AnchorPane.topAnchor="25.0">
+         <bottom>
+            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="150.0" BorderPane.alignment="CENTER">
+               <top>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image url="@../../../images/WeatherIcons/sunny.png" />
+                     </image>
+                     <BorderPane.margin>
+                        <Insets top="25.0" />
+                     </BorderPane.margin>
+                  </ImageView>
+               </top>
+               <center>
+                  <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <top>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Cloudy" BorderPane.alignment="CENTER">
+                           <font>
+                              <Font name="Arial" size="24.0" />
+                           </font>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                        </Text>
+                     </top>
+                     <center>
+                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="78" BorderPane.alignment="CENTER">
+                           <BorderPane.margin>
+                              <Insets bottom="100.0" />
+                           </BorderPane.margin>
+                           <font>
+                              <Font name="Arial" size="64.0" />
+                           </font>
+                        </Text>
+                     </center>
+                     <BorderPane.margin>
+                        <Insets top="175.0" />
+                     </BorderPane.margin>
+                  </BorderPane>
+               </center>
+               <BorderPane.margin>
+                  <Insets bottom="150.0" />
+               </BorderPane.margin>
+            </BorderPane>
+         </bottom>
+         <top>
+            <Text fx:id="cityName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="San Antonio" textAlignment="CENTER" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="Arial" size="42.0" />
+               </font>
+            </Text>
+         </top>
+      </BorderPane>
    </children>
 </AnchorPane>

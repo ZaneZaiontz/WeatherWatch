@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="800.0" maxWidth="800.0" minHeight="800.0" minWidth="800.0" prefHeight="800.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.controller.RadarController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.RadarController">
    <children>
+      <BorderPane prefHeight="800.0" prefWidth="1200.0">
+         <top>
+            <ImageView fitHeight="800.0" fitWidth="2000.0" pickOnBounds="true" preserveRatio="true" translateX="-100.0" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../../../tmpForShowcase/radar.PNG" />
+               </image>
+               <viewport>
+                  <Rectangle2D minX="1200.0" />
+               </viewport>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </ImageView>
+         </top>
+      </BorderPane>
    		<Label fx:id="label" alignment="CENTER" layoutY="100.0" maxWidth="800.0" minWidth="800.0" prefWidth="800.0" textAlignment="CENTER" textFill="BLACK" />
    </children>
 </AnchorPane>
