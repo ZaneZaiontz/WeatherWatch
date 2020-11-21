@@ -31,7 +31,7 @@
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../images/ButtonIcons/NewsIconWhite.png" />
+                              <Image url="@../../../images/ButtonIcons/RadarImgWhite.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
@@ -39,7 +39,7 @@
                      <graphic>
                         <ImageView fitHeight="40.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../images/ButtonIcons/RadarImgWhite.png" />
+                              <Image url="@../../../images/ButtonIcons/NewsIconWhite.png" />
                            </image>
                         </ImageView>
                      </graphic></Button>
