@@ -10,6 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ForecastController">
    <children>
+      <Pane layoutY="400.0" opacity="0.2" prefHeight="200.0" prefWidth="1200.0" style="-fx-background-color: #000000;" />
       <BorderPane layoutX="500.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="200.0" AnchorPane.topAnchor="25.0">
          <bottom>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="150.0" BorderPane.alignment="CENTER">
@@ -63,7 +64,7 @@
             </Text>
          </top>
       </BorderPane>
-      <GridPane fx:id="gridPane" layoutX="100.0" layoutY="450.0" maxHeight="300.0" maxWidth="700.0" minHeight="300.0" minWidth="1000.0" style="-fx-background-color: #ffffff;">
+      <GridPane fx:id="gridPane" layoutX="100.0" layoutY="400.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="1000.0">
         <columnConstraints>
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -79,20 +80,62 @@
           <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="64.0" valignment="CENTER" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label fx:id="d1" />
-            <Label fx:id="d2" GridPane.columnIndex="1" />
-            <Label fx:id="d3" GridPane.columnIndex="2" />
-            <Label fx:id="d4" GridPane.columnIndex="3" />
-            <Label fx:id="d5" GridPane.columnIndex="4" />
-            <Label fx:id="d6" GridPane.columnIndex="5" />
-            <Label fx:id="d7" GridPane.columnIndex="6" />
-            <Label fx:id="t1" GridPane.rowIndex="2" />
-            <Label fx:id="t2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label fx:id="t3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <Label fx:id="t4" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-            <Label fx:id="t5" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-            <Label fx:id="t6" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-            <Label fx:id="t7" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <Label fx:id="d1" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="d2" textFill="WHITE" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="d3" textFill="WHITE" GridPane.columnIndex="2">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="d4" textFill="WHITE" GridPane.columnIndex="3">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="d5" textFill="WHITE" GridPane.columnIndex="4">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="d6" textFill="WHITE" GridPane.columnIndex="5">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="d7" textFill="WHITE" GridPane.columnIndex="6">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="t1" textFill="WHITE" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="t2" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="t3" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="t4" textFill="WHITE" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="t5" textFill="WHITE" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="t6" textFill="WHITE" GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
+            <Label fx:id="t7" textFill="WHITE" GridPane.columnIndex="6" GridPane.rowIndex="2">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font></Label>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                <image>
                   <Image url="@../../../images/WeatherIcons/moreCloud.png" />

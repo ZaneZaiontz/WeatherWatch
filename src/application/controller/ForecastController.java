@@ -21,7 +21,6 @@ public class ForecastController {
 	@FXML
 	ImageView icon;
 	
-	
 	public void initialize(){
 		try{
 			WeatherWatch w = new WeatherWatch();
@@ -112,9 +111,10 @@ public class ForecastController {
 			// Set 7 day forecast
 			
 			// Set Precipitation/Wind/Temp over day
-		
+			
+			
+			w.save();
 		}catch(Exception e){}
 		
 	}
-
 }

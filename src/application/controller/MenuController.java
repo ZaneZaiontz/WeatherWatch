@@ -2,21 +2,14 @@ package application.controller;
 
 import javafx.fxml.FXMLLoader;  
 import javafx.event.ActionEvent;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.fxml.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.net.URL;
 import application.Main;
 import application.model.WeatherWatch;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
  
 public class MenuController {  
 	
@@ -26,6 +19,8 @@ public class MenuController {
 	private Pane view;
 	@FXML
 	ImageView background;
+	
+	WeatherWatch w;
 	
 	public void initialize(){
 		try{
@@ -50,7 +45,7 @@ public class MenuController {
 	@FXML
 	private void handleButton2Action(ActionEvent event){
 		try{
-			URL fileUrl = Main.class.getResource("/application/view/DetailedWeather.fxml");
+			URL fileUrl = Main.class.getResource("/application/view/Radar.fxml");
 			new FXMLLoader();
 			view = FXMLLoader.load(fileUrl);
 			mainPane.setCenter(view);
