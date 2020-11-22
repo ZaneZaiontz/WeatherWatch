@@ -50,7 +50,7 @@ public class MenuController {
 	@FXML
 	private void handleButton2Action(ActionEvent event){
 		try{
-			URL fileUrl = Main.class.getResource("/application/view/DetailedWeather.fxml");
+			URL fileUrl = Main.class.getResource("/application/view/Radar.fxml");
 			new FXMLLoader();
 			view = FXMLLoader.load(fileUrl);
 			mainPane.setCenter(view);
