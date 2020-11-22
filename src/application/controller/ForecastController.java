@@ -28,6 +28,43 @@ public class ForecastController {
 			
 			
 			// If getWeatherIcon is cloudy etc set image and background as cloudy, etc
+		/*	if(w.getWeatherIcon().equals("clear")){
+				//SetImage
+				//SetBackground
+			}
+			else if(w.getWeatherIcon().equals("clear night")){
+				
+			}
+			else if(w.getWeatherIcon().equals("cloudSunny")){
+			
+			}
+			else if(w.getWeatherIcon().equals("cloudNight")){
+
+			}
+			else if(w.getWeatherIcon().equals("clouds")){
+				
+			}
+			else if(w.getWeatherIcon().equals("moreClouds")){
+				
+			}
+			else if(w.getWeatherIcon().equals("rain")){
+
+			}
+			else if(w.getWeatherIcon().equals("rainSun")){
+
+			}
+			else if(w.getWeatherIcon().equals("rainNight")){
+				
+			}
+			else if(w.getWeatherIcon().equals("thunderstorm")){
+				
+			}
+			else if(w.getWeatherIcon().equals("snow")){
+				
+			}
+			else if(w.getWeatherIcon().equals("mist")){
+				
+			}*/
 			
 			// Set 7 day forecast
 			

@@ -26,7 +26,7 @@ public class WeatherWatch {
 	//public static String cityName;
 	private String cityName;
 	private String fileName = "data/city.csv";
-	private String Temp, feelsLike, humidity, windSpeed, latitude, longitude;
+	private String Temp, feelsLike, humidity, windSpeed, latitude, longitude, icon;
 	
 	
 	public WeatherWatch() {
@@ -169,10 +169,45 @@ public class WeatherWatch {
 		this.windSpeed = data;
 	}
 	
-	//public void setWeatherIcon(String data){
-		
-	
-	//}
+	public void setWeatherIcon(String icon){
+		if(icon.equals("01d")){
+			this.icon = "clear";
+		}
+		else if(icon.equals("01n")){
+			this.icon = "clear night";
+		}
+		else if(icon.equals("02d")){
+			this.icon = "cloudSunny";
+		}
+		else if(icon.equals("02n")){
+			this.icon = "cloudNight";
+		}
+		else if(icon.equals("03d") || icon.equals("03n")){
+			this.icon = "clouds";
+		}
+		else if(icon.equals("04d") || icon.equals("03n")){
+			this.icon = "moreclouds";
+		}
+		else if(icon.equals("09d") || icon.equals("09n")){
+			this.icon = "rain";
+		}
+		else if(icon.equals("10d")){
+			this.icon = "rainSun";
+		}
+		else if(icon.equals("10n")){
+			this.icon = "rainNight";
+		}
+		else if(icon.equals("11d") || icon.equals("11n")){
+			this.icon = "thunderstorm";
+		}
+		else if(icon.equals("13d") || icon.equals("13n")){
+			this.icon = "snow";
+		}
+		else if(icon.equals("50d") ||  icon.equals("50n")){
+			this.icon = "mist";
+		}
+		else { this.icon = "mist";}
+	}
 	
 	/*public void setPrecipitation(String data){
 		
@@ -190,10 +225,10 @@ public class WeatherWatch {
 	public String getWindSpeed(){
 		return this.windSpeed;
 	}
-	/*public void setWeather(String data){
-		
+	public String getWeatherIcon(){
+		return this.icon;
 	}
-	public void setPrecipitation(String data){
+	/*public void setPrecipitation(String data){
 		
 	}*/
 	
@@ -205,5 +240,7 @@ public class WeatherWatch {
 	
 	
 	//~~ Radar
+	
+	//~~ Weather History
 	
 }
