@@ -66,7 +66,6 @@ public class Daily {
 	
 	//~~ toString()
 	public String toString(){
-		String stringRep = (this.high + "/" + this.low + "Humidity: " + this.humidity + " " + this.windSpeed + " " + this.date);
-		return stringRep;
+		return (this.high + "/" + this.low + "Humidity: " + this.humidity + " " + this.windSpeed + " " + this.date);
 	}
 }
