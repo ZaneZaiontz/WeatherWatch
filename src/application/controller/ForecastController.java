@@ -26,45 +26,45 @@ public class ForecastController {
 			w.analyzeCurrent();
 			w.analyzeOneCall(); 
 			
-			
 			// If getWeatherIcon is cloudy etc set image and background as cloudy, etc
-		/*	if(w.getWeatherIcon().equals("clear")){
+			if(w.getCurrentWeatherIcon().equals("clear")){
 				//SetImage
 				//SetBackground
+				System.out.println("clear");
 			}
-			else if(w.getWeatherIcon().equals("clear night")){
-				
+			else if(w.getCurrentWeatherIcon().equals("clear night")){
+				System.out.println("clear night");
 			}
-			else if(w.getWeatherIcon().equals("cloudSunny")){
-			
+			else if(w.getCurrentWeatherIcon().equals("cloudSunny")){
+				System.out.println("cloudSunny");
 			}
-			else if(w.getWeatherIcon().equals("cloudNight")){
-
+			else if(w.getCurrentWeatherIcon().equals("cloudNight")){
+				System.out.println("cloudNight");
 			}
-			else if(w.getWeatherIcon().equals("clouds")){
-				
+			else if(w.getCurrentWeatherIcon().equals("clouds")){
+				System.out.println("clouds");
 			}
-			else if(w.getWeatherIcon().equals("moreClouds")){
-				
+			else if(w.getCurrentWeatherIcon().equals("moreClouds")){
+				System.out.println("moreclouds");
 			}
-			else if(w.getWeatherIcon().equals("rain")){
-
+			else if(w.getCurrentWeatherIcon().equals("rain")){
+				System.out.println("rain");
 			}
-			else if(w.getWeatherIcon().equals("rainSun")){
-
+			else if(w.getCurrentWeatherIcon().equals("rainSun")){
+				System.out.println("rainSun");
 			}
-			else if(w.getWeatherIcon().equals("rainNight")){
-				
+			else if(w.getCurrentWeatherIcon().equals("rainNight")){
+				System.out.println("rainNight");
 			}
-			else if(w.getWeatherIcon().equals("thunderstorm")){
-				
+			else if(w.getCurrentWeatherIcon().equals("thunderstorm")){
+				System.out.println("thunderStorm");
 			}
-			else if(w.getWeatherIcon().equals("snow")){
-				
+			else if(w.getCurrentWeatherIcon().equals("snow")){
+				System.out.println("snow");
 			}
-			else if(w.getWeatherIcon().equals("mist")){
-				
-			}*/
+			else if(w.getCurrentWeatherIcon().equals("mist")){
+				System.out.println("mist");
+			}
 			
 			// Set 7 day forecast
 			

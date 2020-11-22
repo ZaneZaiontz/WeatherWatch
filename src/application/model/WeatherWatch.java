@@ -6,9 +6,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.Scanner;
-
+import java.time.*;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -122,19 +123,78 @@ public class WeatherWatch {
 		setFeelsLike(currentMap.get("feels_like").toString());
 		setHumidity(currentMap.get("humidity").toString());
 		setWindSpeed(currentMap.get("wind_speed").toString());
-		
-		System.out.println(currentMap);
-	
-		System.out.println(currentMap.get("weather"));
 
-	
-		//setWeatherDescription();
-		//setWeatherMain()
-		//setWeatherIcon(icon)
-		
+
+		Object obj2 = new JSONParser().parse(jo.get("current").toString());
+		JSONObject jo2 = (JSONObject) obj2; 
+		JSONArray jArr = (JSONArray) jo2.get("weather");
+
+		 Iterator<?> iterator = jArr.iterator();
+		 while(iterator.hasNext()) {
+		    Object weather = new JSONParser().parse(iterator.next().toString());
+			JSONObject weatherObj = (JSONObject) weather;
+		    setCurrentWeatherIcon(weatherObj.get("icon").toString());
+		 }
+		 
+
 		//~~ Daily;
 		//Map<String, Object> dailyMap = jsonToMap(jo.get("daily").toString());
 		//System.out.println(dailyMap);
+		 JSONArray dArr = (JSONArray) jo.get("daily");
+		 Iterator<?> iteratorDaily = dArr.iterator();
+		 int i = 1;
+		 while(iteratorDaily.hasNext()) {
+			 
+		    Object daily = new JSONParser().parse(iteratorDaily.next().toString());
+			JSONObject dailyObj = (JSONObject) daily; 
+			
+			 Map<String, Object> tempMap = jsonToMap(dailyObj.get("temp").toString());
+			 Map<String, Object> feelsLikeMap = jsonToMap(dailyObj.get("feels_like").toString());
+			 //SetTemp
+			 tempMap.get("min").toString();
+			 tempMap.get("max").toString();
+			 //SetFeelsLike
+			 feelsLikeMap.get("day").toString();
+			 //SetHumidity
+			 dailyObj.get("humidity").toString();
+			 //SetWindSpeed
+			 dailyObj.get("wind_speed").toString();
+			 //SetWeather
+			 //{}
+			 
+		    String timeStamp = dailyObj.get("dt").toString();
+		    Date date = new Date(Long.parseLong(timeStamp)*1000);
+		   // System.out.println(date);
+		    
+		    
+		    //Ignore day 0 because that is the current day. 
+		   /* if(i == 1){
+		    	//SetDayOne
+		    }
+		    else if(i == 2){
+		    	//SetDayTwo
+		    }
+		    else if(i == 3){
+		    	//SetDayThree
+		    }
+		    else if(i == 4){
+		    	//SetDayFour
+		    }
+		    else if(i == 5){
+		    	//SetDayFive
+		    }
+		    else if(i == 6){
+		    	//SetDaySix
+		    }
+		    else if(i == 7){
+		    	//SetDaySeven
+		    }
+		    else if(i == 8){
+		    	//SetDayEight
+		    }
+		    i++;*/
+		 }
+
 	
 		//~~ Hourly
 		
@@ -169,7 +229,7 @@ public class WeatherWatch {
 		this.windSpeed = data;
 	}
 	
-	public void setWeatherIcon(String icon){
+	public void setCurrentWeatherIcon(String icon){
 		if(icon.equals("01d")){
 			this.icon = "clear";
 		}
@@ -185,7 +245,7 @@ public class WeatherWatch {
 		else if(icon.equals("03d") || icon.equals("03n")){
 			this.icon = "clouds";
 		}
-		else if(icon.equals("04d") || icon.equals("03n")){
+		else if(icon.equals("04d") || icon.equals("04n")){
 			this.icon = "moreclouds";
 		}
 		else if(icon.equals("09d") || icon.equals("09n")){
@@ -209,10 +269,6 @@ public class WeatherWatch {
 		else { this.icon = "mist";}
 	}
 	
-	/*public void setPrecipitation(String data){
-		
-	}*/
-	
 	public String getTemp(){
 		return this.Temp;
 	}
@@ -225,17 +281,16 @@ public class WeatherWatch {
 	public String getWindSpeed(){
 		return this.windSpeed;
 	}
-	public String getWeatherIcon(){
+	public String getCurrentWeatherIcon(){
 		return this.icon;
 	}
-	/*public void setPrecipitation(String data){
-		
-	}*/
+	
+	//~~ Daily 
+	
 	
 	//~~ Hourly
 	
 	
-	//~~ Daily 
 	
 	
 	
