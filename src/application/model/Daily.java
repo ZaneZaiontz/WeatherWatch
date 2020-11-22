@@ -5,16 +5,17 @@ import java.util.Date;
 
 public class Daily {
 	
-	private String high, low,  humidity, windSpeed, description, icon;
+	private String high, low,  humidity, windSpeed, description, icon, pop;
 	Long timestamp;
 	//Date date;
 	
 	//~~ Constructor
-	public Daily(String high, String low, String humidity, String windSpeed, String description, String icon,Long timestamp){
+	public Daily(String high, String low, String humidity, String windSpeed,String pop, String description, String icon,Long timestamp){
 		this.high = high;
 		this.low = low;
 		this.humidity = humidity;
 		this.windSpeed = windSpeed;
+		this.pop = pop;
 		this.description = description;
 		this.icon = icon;
 		this.timestamp = timestamp;
@@ -38,6 +39,9 @@ public class Daily {
 	}
 	public void setDescription(String data){
 		this.description = data;
+	}
+	public void setPop(String data){
+		this.pop = data;
 	}
 	public void setDate(Long date){
 		this.timestamp = date;
@@ -75,6 +79,18 @@ public class Daily {
 	public Long getDate(){
 		return this.timestamp;
 	}
+	
+	public String getPop(){
+		return this.pop;
+	}
+	
+	public double getPopPercent(){
+		Double result = Double.parseDouble(this.pop);
+		double percent = (result*100);
+		
+		return percent;
+	}
+	
 	
 	public String getDay(){
 		 Date date = new Date(this.timestamp*1000L);

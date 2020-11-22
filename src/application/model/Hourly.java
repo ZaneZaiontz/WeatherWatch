@@ -1,13 +1,14 @@
 package application.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Hourly {
 	private String temp,  humidity, windSpeed, description, icon;
-	Date date;
+	Long date;
 
 //~~ Constructor
-public Hourly(String temp, String humidity, String windSpeed, String description, String icon, Date date){
+public Hourly(String temp, String humidity, String windSpeed, String description, String icon, Long date){
 	this.temp = temp;
 	this.humidity = humidity;
 	this.windSpeed = windSpeed;
@@ -33,7 +34,7 @@ public void setIcon(String data){
 public void setDescription(String data){
 	this.description = data;
 }
-public void setDate(Date date){
+public void setDate(Long date){
 	this.date = date;
 }
 
@@ -53,8 +54,15 @@ public String getIcon(){
 public String getDescription(){
 	return this.description;
 }
-public Date getDate(){
+public Long getDate(){
 	return this.date;
+}
+
+public String getDay(){
+	 Date date = new Date(this.date*1000L);
+	 SimpleDateFormat jdf = new SimpleDateFormat("E dd");
+	 String java_date = jdf.format(date);
+	 return java_date;
 }
 
 //~~ toString()

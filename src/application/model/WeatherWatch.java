@@ -1,26 +1,22 @@
 package application.model;
 
-import java.io.File; 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
-import java.util.Scanner;
-import java.time.*;
-import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Scanner;
 
-import org.json.*;
-import org.json.simple.JSONArray; 
-import org.json.simple.JSONObject; 
-import org.json.simple.parser.*; 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 
-import com.google.gson.*;
-import com.google.gson.reflect.*;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 
 public class WeatherWatch {
@@ -30,7 +26,6 @@ public class WeatherWatch {
 	private String Temp, feelsLike, humidity, windSpeed, latitude, longitude, icon, description;
 	ArrayList<Daily> dailyObjects = new ArrayList<>();
 	ArrayList<Hourly> hourlyObjects = new ArrayList<>();
-	ArrayList<WeatherHistory> weatherHistoryObjects = new ArrayList<>();
 	
 	public WeatherWatch() {
 	}
@@ -149,11 +144,10 @@ public class WeatherWatch {
 			
 			Map<String, Object> tempMap = jsonToMap(dailyObj.get("temp").toString());
 			//Map<String, Object> feelsLikeMap = jsonToMap(dailyObj.get("feels_like").toString());
-			 
 			
 			String timeStamp = dailyObj.get("dt").toString();
 			Long date = Long.parseLong(timeStamp);
-			  
+			 
 			//SetWeather
 			JSONArray dOArr = (JSONArray) dailyObj.get("weather");
 			Object weather2 = new JSONParser().parse(dOArr.get(0).toString());
@@ -161,7 +155,7 @@ public class WeatherWatch {
 					
 			Daily object = new Daily(tempMap.get("min").toString(), tempMap.get("max").toString(), 
 					dailyObj.get("humidity").toString(),  dailyObj.get("wind_speed").toString(), 
-					weatherObj2.get("description").toString(), weatherObj2.get("icon").toString(), date);
+					dailyObj.get("pop").toString(), weatherObj2.get("description").toString(), weatherObj2.get("icon").toString(), date);
 
 			dailyObjects.add(object);
 		 }
@@ -176,7 +170,8 @@ public class WeatherWatch {
 			JSONObject hourlyObj = (JSONObject) hourly; 
 			 
 			String timeStampHourly = hourlyObj.get("dt").toString();
-			Date dateHourly = new Date(Long.parseLong(timeStampHourly)*1000);
+			Long dateHourly = Long.parseLong(timeStampHourly);
+			//Date dateHourly = new Date(Long.parseLong(timeStampHourly)*1000);
 			
 			//SetWeather
 			JSONArray hOArr = (JSONArray) (hourlyObj.get("weather"));
@@ -190,12 +185,6 @@ public class WeatherWatch {
 		 }
 		
 	}
-	
-	//~~ WeatherHistory
-	public void analyzeWeatherHistory(){
-		
-	}
-	
 	
 	//Set Latitude and longitude
 	public void setLatitude(String data){
@@ -307,14 +296,4 @@ public class WeatherWatch {
 	public ArrayList<Hourly> getHourlyArray(){
 		return this.hourlyObjects;
 	}
-
-	
-	//~~ Weather History
-	public void setWeatherHistoryArray(){ 
-		
-	}
-	public ArrayList<WeatherHistory> getWeatherHistoryArray(){
-		return this.weatherHistoryObjects;
-	}
-	
 }
