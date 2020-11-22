@@ -1,15 +1,15 @@
 package application.controller;
 
-import application.model.WeatherWatch; 
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import javafx.stage.Stage;
 
 public class RadarController {
 
@@ -20,19 +20,19 @@ public class RadarController {
 	@FXML 
 	AnchorPane root;
 
-	public void initialize(){
+	public void initialize()throws IOException{
+		label.setText("Radar");
+		File file = new File("data/city.csv");
+		Scanner s1 = new Scanner(file);
+		String line = s1.nextLine();
+		String tokens[] = line.split(",");
+		s1.close();
 		
-		//label.setText("Radar");
-		//WeatherWatch w = new WeatherWatch();
-		//w.analyzeCurrent()
 		WebView web = new WebView();
 		WebEngine engine = web.getEngine();
-		//engine.load("https://www.windy.com/-Weather-radar-radar?radar,"+w.getLatitude()+",+"+ w.getLongitude()+",5");
-		engine.load("https://www.windy.com/-Weather-radar-radar?radar,33.138,-92.769,5");
-		//engine.load("https://openweathermap.org/weathermap?basemap=map&cities=false&layer=radar&lat=30&lon=-20&zoom=3");
-		
-		fStack.getChildren().add(web);
 
+		engine.load(String.format("https://www.windy.com/-Weather-radar-radar?radar,%s,%s,10", tokens[1], tokens[2]));
+		fStack.getChildren().add(web);
 	}
 
 }
