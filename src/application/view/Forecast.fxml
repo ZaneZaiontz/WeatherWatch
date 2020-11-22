@@ -57,7 +57,7 @@
             </BorderPane>
          </bottom>
          <top>
-            <Text fx:id="cityName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="San Antonio" textAlignment="CENTER" BorderPane.alignment="CENTER">
+            <Text fx:id="cityName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Arial" size="42.0" />
                </font>

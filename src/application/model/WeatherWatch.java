@@ -1,27 +1,25 @@
 package application.model;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
-import java.net.URLConnection;
-import java.util.Map;
 import java.util.Scanner;
+
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+
+import org.json.*;
+import org.json.simple.JSONArray; 
+import org.json.simple.JSONObject; 
+import org.json.simple.parser.*; 
 
 import com.google.gson.*;
 import com.google.gson.reflect.*;
-
-// Isn't my best work, just trying to get something workable for the demo.
-// Some problems - Current - Can't get map "weather":[{"id":800,"main":"Clear","description":"clear sky","icon":"01n"}] 
-//				 - Not sure how to do radar. 
-//				 - Can't use OneCall to get info. 
-// Had to do current to get lon and lat, 
-// Use OneCall for Current, Daily, Hourly, and WeatherHistory. 
-//~Gabrielle
 
 
 public class WeatherWatch {
@@ -80,66 +78,65 @@ public class WeatherWatch {
 	
 	public static Map<String, Object> jsonToMap(String str) {
 		Map<String, Object> map = new Gson().fromJson(str, new TypeToken<HashMap<String, Object>>() {}.getType());
-
 		return map;
 	} 
 	
 	//~~ Current
-	public void analyzeCurrent() throws IOException{
+	public void analyzeCurrent() throws Exception{
 
-			StringBuilder result = new StringBuilder();
-			URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=48fb3ffd07fec36d9f2a24f46772bada&units=imperial");
-			URLConnection conn = url.openConnection();
-
-			BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			String line;
-			while ((line = rd.readLine()) != null) {
-				result.append(line);
-			}
-			rd.close();
-			//System.out.println(result);
+		URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=48fb3ffd07fec36d9f2a24f46772bada&units=imperial");
+		
+		Scanner scan = new Scanner(url.openStream());
+	    String str = new String();
+	    while (scan.hasNext())
+	        str += scan.nextLine();
+	    scan.close();
+	   
+		Map<String, Object> respMap = jsonToMap(str);
+		Map<String, Object> coordMap = jsonToMap(respMap.get("coord").toString());
+		
+		setLatitude(coordMap.get("lat").toString());
+		setLongitude(coordMap.get("lon").toString()); 
+	}		
 			
-			
-			Map<String, Object> respMap = jsonToMap(result.toString());
-			Map<String, Object> mainMap = jsonToMap(respMap.get("main").toString());
-			Map<String, Object> windMap = jsonToMap(respMap.get("wind").toString());
-			Map<String, Object> coord = jsonToMap(respMap.get("coord").toString());
-			//Map<String, Object> wMap = jsonToMap(respMap.get("weather").toString());
-			
-			//System.out.println("Lat: " + coord.get("lat"));
-			//System.out.println("Long: " + coord.get("lon"));
-			//System.out.println("Current h: " + mainMap.get("humidity"));  
-			//System.out.println("Current feels like Temperatures: " + mainMap.get("feels_like"));
-			//System.out.println("Current Humidity: " + mainMap.get("humidity"));
-			//System.out.println("Wind speeds: " + windMap.get("speed"));
-			//System.out.println("Wind angle: " + windMap.get("deg"));
-			
-			setTemp(mainMap.get("temp").toString());
-			setFeelsLike(mainMap.get("feels_like").toString());
-			setHumidity(mainMap.get("humidity").toString());
-			setWindSpeed(windMap.get("speed").toString());
-			setLatitude(coord.get("lat").toString());
-			setLongitude(coord.get("lon").toString()); 
-	}
 
 	//~~ OneCall
-	public void analyzeOneCall() throws IOException{
+	public void analyzeOneCall() throws Exception{
 		//https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}&units={units}
-		StringBuilder result = new StringBuilder();
-		URL url = new URL("https://api.openweathermap.org/data/2.5/onecall?" + "lat=" + getLatitude() + "&lon=" + getLongitude() + "&appid=48fb3ffd07fec36d9f2a24f46772bada&units=imperial");
-		URLConnection conn = url.openConnection();
-
-		BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-		String line;
-		while ((line = rd.readLine()) != null) {
-			result.append(line);
-		}
-		rd.close();
-		//System.out.println(result);
 		
-		Map<String, Object> respMap = jsonToMap(result.toString());
-		//System.out.println(respMap);
-		//Map<String, Object> mainMap = jsonToMap(respMap.get("current").toString());
+		URL url = new URL("https://api.openweathermap.org/data/2.5/onecall?" + "lat=" + getLatitude() + "&lon=" + getLongitude() + "&appid=48fb3ffd07fec36d9f2a24f46772bada&units=imperial");
+		
+		Scanner scan = new Scanner(url.openStream());
+	    String str = new String();
+	    while (scan.hasNext())
+	        str += scan.nextLine();
+	    scan.close();
+		
+	    Object obj = new JSONParser().parse(str);
+		JSONObject jo = (JSONObject) obj; 
+	    
+	    // ~~ Current
+		Map<String, Object> currentMap = jsonToMap(jo.get("current").toString());
+		
+		setTemp(currentMap.get("temp").toString());
+		setFeelsLike(currentMap.get("feels_like").toString());
+		setHumidity(currentMap.get("humidity").toString());
+		setWindSpeed(currentMap.get("wind_speed").toString());
+		
+		System.out.println(currentMap);
+	
+		System.out.println(currentMap.get("weather"));
+
+	
+		//setWeatherDescription();
+		//setWeatherMain()
+		//setWeatherIcon(icon)
+		
+		//~~ Daily;
+		//Map<String, Object> dailyMap = jsonToMap(jo.get("daily").toString());
+		//System.out.println(dailyMap);
+	
+		//~~ Hourly
 		
 	}
 	
@@ -152,7 +149,6 @@ public class WeatherWatch {
 	}
 	
 	public String getLatitude(){
-		
 		return this.latitude;
 	}
 	public String getLongitude(){
@@ -172,10 +168,13 @@ public class WeatherWatch {
 	public void setWindSpeed(String data){
 		this.windSpeed = data;
 	}
-	/*public void setWeather(String data){
+	
+	//public void setWeatherIcon(String data){
 		
-	}
-	public void setPrecipitation(String data){
+	
+	//}
+	
+	/*public void setPrecipitation(String data){
 		
 	}*/
 	
