@@ -29,6 +29,8 @@ public class WeatherWatch {
 	private String fileName = "data/city.csv";
 	private String Temp, feelsLike, humidity, windSpeed, latitude, longitude, icon;
 	ArrayList<Daily> dailyObjects = new ArrayList<>();
+	ArrayList<Hourly> hourlyObjects = new ArrayList<>();
+	ArrayList<WeatherHistory> weatherHistoryObjects = new ArrayList<>();
 	
 	public WeatherWatch() {
 	}
@@ -109,8 +111,9 @@ public class WeatherWatch {
 		
 		Scanner scan = new Scanner(url.openStream());
 	    String str = new String();
-	    while (scan.hasNext())
+	    while (scan.hasNext()){
 	        str += scan.nextLine();
+	    }
 	    scan.close();
 		
 	    Object obj = new JSONParser().parse(str);
@@ -128,18 +131,14 @@ public class WeatherWatch {
 		Object obj2 = new JSONParser().parse(jo.get("current").toString());
 		JSONObject jo2 = (JSONObject) obj2; 
 		JSONArray jArr = (JSONArray) jo2.get("weather");
-
-		 Iterator<?> iterator = jArr.iterator();
-		 while(iterator.hasNext()) {
-		    Object weather = new JSONParser().parse(iterator.next().toString());
-			JSONObject weatherObj = (JSONObject) weather;
-		    setCurrentWeatherIcon(weatherObj.get("icon").toString());
-		 }
+		
+	    Object weather = new JSONParser().parse(jArr.get(0).toString());
+		JSONObject weatherObj = (JSONObject) weather;
+	    setCurrentWeatherIcon(weatherObj.get("icon").toString());
+	 
 		 
 
 		//~~ Daily;
-		//Map<String, Object> dailyMap = jsonToMap(jo.get("daily").toString());
-		//System.out.println(dailyMap);
 		 JSONArray dArr = (JSONArray) jo.get("daily");
 		 Iterator<?> iteratorDaily = dArr.iterator();
 
@@ -148,40 +147,24 @@ public class WeatherWatch {
 		    Object daily = new JSONParser().parse(iteratorDaily.next().toString());
 			JSONObject dailyObj = (JSONObject) daily; 
 			
-			 Map<String, Object> tempMap = jsonToMap(dailyObj.get("temp").toString());
-			 Map<String, Object> feelsLikeMap = jsonToMap(dailyObj.get("feels_like").toString());
+			Map<String, Object> tempMap = jsonToMap(dailyObj.get("temp").toString());
+			Map<String, Object> feelsLikeMap = jsonToMap(dailyObj.get("feels_like").toString());
 			 
-			  String timeStamp = dailyObj.get("dt").toString();
-			  Date date = new Date(Long.parseLong(timeStamp)*1000);
+			String timeStamp = dailyObj.get("dt").toString();
+			Date date = new Date(Long.parseLong(timeStamp)*1000);
 			  
-			  //SetWeather
-			  //Object weatherDaily = new JSONParser().parse(iterator.next().toString());
-			  //JSONObject weatherObjDaily = (JSONObject) weatherDaily;
-				
-
-				/*Object obj3 = new JSONParser().parse(dailyObj.get("weather").toString());
-				JSONObject jo3 = (JSONObject) obj3; 
-				System.out.println(jo3);
-				JSONArray dOArr = (JSONArray) jo3.get("weather");
-				 System.out.println(dOArr);
-				 Iterator<?> iterator3 = dOArr.iterator();
-				 while(iterator3.hasNext()) {
-				    Object weather2 = new JSONParser().parse(iterator3.next().toString());
-				    System.out.println(weather2);
-					JSONObject weatherObj2 = (JSONObject) weather2;
-					Sys*/
-			Daily object = new Daily(tempMap.get("min").toString(), tempMap.get("max").toString(), dailyObj.get("humidity").toString(),  dailyObj.get("wind_speed").toString(), date);
+			//SetWeather
+			JSONArray dOArr = (JSONArray) dailyObj.get("weather");
+			Object weather2 = new JSONParser().parse(dOArr.get(0).toString());
+			JSONObject weatherObj2 = (JSONObject) weather2;
+					
+			Daily object = new Daily(tempMap.get("min").toString(), tempMap.get("max").toString(), 
+					dailyObj.get("humidity").toString(),  dailyObj.get("wind_speed").toString(), 
+					weatherObj2.get("description").toString(), weatherObj2.get("icon").toString(), date);
 
 			dailyObjects.add(object);
-			
-			 
-		  
-		   // System.out.println(date);
-		    
-		   
 		 }
 
-	
 		//~~ Hourly
 		
 	}
@@ -283,12 +266,20 @@ public class WeatherWatch {
 	
 	//~~ Hourly
 	
-	
-	
-	
-	
-	//~~ Radar
+	public void setHourlyArray(){ 
+		
+	}
+	public ArrayList<Hourly> getHourlyArray(){
+		return this.hourlyObjects;
+	}
+
 	
 	//~~ Weather History
+	public void setWeatherHistoryArray(){ 
+		
+	}
+	public ArrayList<WeatherHistory> getWeatherHistoryArray(){
+		return this.weatherHistoryObjects;
+	}
 	
 }
