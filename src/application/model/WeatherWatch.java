@@ -143,7 +143,7 @@ public class WeatherWatch {
 		 Iterator<?> iteratorDaily = dArr.iterator();
 
 		 while(iteratorDaily.hasNext()) {
-			 
+			  
 		    Object daily = new JSONParser().parse(iteratorDaily.next().toString());
 			JSONObject dailyObj = (JSONObject) daily; 
 			

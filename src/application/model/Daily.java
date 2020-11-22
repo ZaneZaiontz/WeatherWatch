@@ -16,7 +16,8 @@ public class Daily {
 		this.description = description;
 		this.icon = icon;
 		this.date = date;
-	}
+	} 
+	
 	//~~ Setters
 	public void setHigh(String data){
 		this.high = data;
