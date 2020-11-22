@@ -8,6 +8,8 @@ import javafx.fxml.*;
 import java.net.URL;
 import application.Main;
 import application.model.WeatherWatch;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
  
 public class MenuController {  
 	
