@@ -28,7 +28,7 @@ public class WeatherWatch {
 	private String cityName;
 	private String fileName = "data/city.csv";
 	private String Temp, feelsLike, humidity, windSpeed, latitude, longitude, icon;
-	
+	ArrayList<Daily> dailyObjects = new ArrayList<>();
 	
 	public WeatherWatch() {
 	}
@@ -142,7 +142,7 @@ public class WeatherWatch {
 		//System.out.println(dailyMap);
 		 JSONArray dArr = (JSONArray) jo.get("daily");
 		 Iterator<?> iteratorDaily = dArr.iterator();
-		 int i = 1;
+
 		 while(iteratorDaily.hasNext()) {
 			 
 		    Object daily = new JSONParser().parse(iteratorDaily.next().toString());
@@ -150,49 +150,35 @@ public class WeatherWatch {
 			
 			 Map<String, Object> tempMap = jsonToMap(dailyObj.get("temp").toString());
 			 Map<String, Object> feelsLikeMap = jsonToMap(dailyObj.get("feels_like").toString());
-			 //SetTemp
-			 tempMap.get("min").toString();
-			 tempMap.get("max").toString();
-			 //SetFeelsLike
-			 feelsLikeMap.get("day").toString();
-			 //SetHumidity
-			 dailyObj.get("humidity").toString();
-			 //SetWindSpeed
-			 dailyObj.get("wind_speed").toString();
-			 //SetWeather
-			 //{}
 			 
-		    String timeStamp = dailyObj.get("dt").toString();
-		    Date date = new Date(Long.parseLong(timeStamp)*1000);
+			  String timeStamp = dailyObj.get("dt").toString();
+			  Date date = new Date(Long.parseLong(timeStamp)*1000);
+			  
+			  //SetWeather
+			  //Object weatherDaily = new JSONParser().parse(iterator.next().toString());
+			  //JSONObject weatherObjDaily = (JSONObject) weatherDaily;
+				
+
+				/*Object obj3 = new JSONParser().parse(dailyObj.get("weather").toString());
+				JSONObject jo3 = (JSONObject) obj3; 
+				System.out.println(jo3);
+				JSONArray dOArr = (JSONArray) jo3.get("weather");
+				 System.out.println(dOArr);
+				 Iterator<?> iterator3 = dOArr.iterator();
+				 while(iterator3.hasNext()) {
+				    Object weather2 = new JSONParser().parse(iterator3.next().toString());
+				    System.out.println(weather2);
+					JSONObject weatherObj2 = (JSONObject) weather2;
+					Sys*/
+			Daily object = new Daily(tempMap.get("min").toString(), tempMap.get("max").toString(), dailyObj.get("humidity").toString(),  dailyObj.get("wind_speed").toString(), date);
+
+			dailyObjects.add(object);
+			
+			 
+		  
 		   // System.out.println(date);
 		    
-		    
-		    //Ignore day 0 because that is the current day. 
-		   /* if(i == 1){
-		    	//SetDayOne
-		    }
-		    else if(i == 2){
-		    	//SetDayTwo
-		    }
-		    else if(i == 3){
-		    	//SetDayThree
-		    }
-		    else if(i == 4){
-		    	//SetDayFour
-		    }
-		    else if(i == 5){
-		    	//SetDayFive
-		    }
-		    else if(i == 6){
-		    	//SetDaySix
-		    }
-		    else if(i == 7){
-		    	//SetDaySeven
-		    }
-		    else if(i == 8){
-		    	//SetDayEight
-		    }
-		    i++;*/
+		   
 		 }
 
 	
@@ -286,6 +272,13 @@ public class WeatherWatch {
 	}
 	
 	//~~ Daily 
+	public void setDailyArray(){
+		
+	}
+	
+	public ArrayList<Daily> getDailyArray(){
+		return this.dailyObjects;
+	}
 	
 	
 	//~~ Hourly

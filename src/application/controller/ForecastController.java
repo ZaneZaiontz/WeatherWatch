@@ -25,9 +25,12 @@ public class ForecastController {
 			
 			w.analyzeCurrent();
 			w.analyzeOneCall(); 
+			//System.out.println(w.getDailyArray() + "\n");
+			
 			
 			// If getWeatherIcon is cloudy etc set image and background as cloudy, etc
-			if(w.getCurrentWeatherIcon().equals("clear")){
+			
+			/*if(w.getCurrentWeatherIcon().equals("clear")){
 				//SetImage
 				//SetBackground
 				System.out.println("clear");
@@ -64,7 +67,7 @@ public class ForecastController {
 			}
 			else if(w.getCurrentWeatherIcon().equals("mist")){
 				System.out.println("mist");
-			}
+			}*/
 			
 			// Set 7 day forecast
 			
