@@ -1,7 +1,6 @@
 package application.controller;
 
-import java.io.IOException;
-
+import java.io.IOException; 
 import application.model.WeatherWatch;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

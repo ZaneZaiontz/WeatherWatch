@@ -3,6 +3,7 @@ package application.controller;
 import application.model.WeatherWatch;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
@@ -14,7 +15,11 @@ public class ForecastController {
 	@FXML
 	private Pane view;
 	@FXML
-	Text cityName;
+	Text cityName, descr, temp;
+	@FXML
+	Label d1, d2, d3, d4, d5, d6, d7, t1, t2, t3, t4, t5, t6, t7;
+	@FXML
+	ImageView icon;
 	
 	
 	public void initialize(){
@@ -25,12 +30,45 @@ public class ForecastController {
 			
 			w.analyzeCurrent();
 			w.analyzeOneCall(); 
-			//System.out.println(w.getDailyArray() + "\n");
+			
+			descr.setText(w.getDescription());
+			Double result = Double.parseDouble(w.getTemp());
+			int degree = (int)Math.round(result);
+			temp.setText(degree + "°F");
+			
+			/*System.out.println(w.getDailyArray().get(1).getIcon());
+			System.out.println(w.getDailyArray().get(2).getIcon());
+			System.out.println(w.getDailyArray().get(3).getIcon());
+			System.out.println(w.getDailyArray().get(4).getIcon());
+			System.out.println(w.getDailyArray().get(5).getIcon());
+			System.out.println(w.getDailyArray().get(6).getIcon());
+			System.out.println(w.getDailyArray().get(7).getIcon());*/
+			
+			d1.setText(w.getDailyArray().get(1).getDay() + "");
+			t1.setText(w.getDailyArray().get(1).getHighInt() + "° " + w.getDailyArray().get(1).getLowInt() + "°" );
+			
+			d2.setText(w.getDailyArray().get(2).getDay() + "");
+			t2.setText(w.getDailyArray().get(2).getHighInt() + "° " + w.getDailyArray().get(2).getLowInt() + "°" );
+			
+			d3.setText(w.getDailyArray().get(3).getDay() + "");
+			t3.setText(w.getDailyArray().get(3).getHighInt() + "° " + w.getDailyArray().get(3).getLowInt() + "°" );
+			
+			d4.setText(w.getDailyArray().get(4).getDay() + "");
+			t4.setText(w.getDailyArray().get(4).getHighInt() + "° " + w.getDailyArray().get(4).getLowInt() + "°" );
+			
+			d5.setText(w.getDailyArray().get(5).getDay() + "");
+			t5.setText(w.getDailyArray().get(5).getHighInt() + "° " + w.getDailyArray().get(5).getLowInt() + "°" );
+			
+			d6.setText(w.getDailyArray().get(6).getDay() + "");
+			t6.setText(w.getDailyArray().get(6).getHighInt() + "° " + w.getDailyArray().get(6).getLowInt() + "°" );
+			
+			d7.setText(w.getDailyArray().get(7).getDay() + "");
+			t7.setText(w.getDailyArray().get(7).getHighInt() + "° " + w.getDailyArray().get(7).getLowInt() + "°" );
+
 			
 			
 			// If getWeatherIcon is cloudy etc set image and background as cloudy, etc
-			
-			/*if(w.getCurrentWeatherIcon().equals("clear")){
+			if(w.getCurrentWeatherIcon().equals("clear")){
 				//SetImage
 				//SetBackground
 				System.out.println("clear");
@@ -47,8 +85,10 @@ public class ForecastController {
 			else if(w.getCurrentWeatherIcon().equals("clouds")){
 				System.out.println("clouds");
 			}
-			else if(w.getCurrentWeatherIcon().equals("moreClouds")){
+			else if(w.getCurrentWeatherIcon().equals("moreclouds")){
 				System.out.println("moreclouds");
+				//MenuController mc = new MenuController();
+				//mc.setBackground("/BackgroundImages/TempBG.png");
 			}
 			else if(w.getCurrentWeatherIcon().equals("rain")){
 				System.out.println("rain");
@@ -67,7 +107,7 @@ public class ForecastController {
 			}
 			else if(w.getCurrentWeatherIcon().equals("mist")){
 				System.out.println("mist");
-			}*/
+			}
 			
 			// Set 7 day forecast
 			

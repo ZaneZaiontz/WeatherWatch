@@ -10,24 +10,23 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.ForecastController">
    <children>
-      <FlowPane fx:id="weatherFore" layoutX="100.0" layoutY="500.0" prefHeight="200.0" prefWidth="1000.0" AnchorPane.bottomAnchor="100.0" />
       <BorderPane layoutX="500.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="200.0" AnchorPane.topAnchor="25.0">
          <bottom>
             <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="150.0" BorderPane.alignment="CENTER">
                <top>
                   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
-                     <image>
-                        <Image url="@../../../images/WeatherIcons/sunny.png" />
-                     </image>
                      <BorderPane.margin>
                         <Insets top="25.0" />
                      </BorderPane.margin>
+                     <image>
+                        <Image url="@../../../images/WeatherIcons/moreCloud.png" />
+                     </image>
                   </ImageView>
                </top>
                <center>
                   <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                      <top>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Cloudy" BorderPane.alignment="CENTER">
+                        <Text fx:id="descr" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="CENTER">
                            <font>
                               <Font name="Arial" size="24.0" />
                            </font>
@@ -37,7 +36,7 @@
                         </Text>
                      </top>
                      <center>
-                        <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="78" BorderPane.alignment="CENTER">
+                        <Text fx:id="temp" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" BorderPane.alignment="CENTER">
                            <BorderPane.margin>
                               <Insets bottom="100.0" />
                            </BorderPane.margin>
@@ -64,5 +63,72 @@
             </Text>
          </top>
       </BorderPane>
+      <GridPane fx:id="gridPane" layoutX="100.0" layoutY="450.0" maxHeight="300.0" maxWidth="700.0" minHeight="300.0" minWidth="1000.0" style="-fx-background-color: #ffffff;">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="94.0" minHeight="0.0" prefHeight="65.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="228.0" minHeight="10.0" prefHeight="167.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="64.0" valignment="CENTER" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="d1" />
+            <Label fx:id="d2" GridPane.columnIndex="1" />
+            <Label fx:id="d3" GridPane.columnIndex="2" />
+            <Label fx:id="d4" GridPane.columnIndex="3" />
+            <Label fx:id="d5" GridPane.columnIndex="4" />
+            <Label fx:id="d6" GridPane.columnIndex="5" />
+            <Label fx:id="d7" GridPane.columnIndex="6" />
+            <Label fx:id="t1" GridPane.rowIndex="2" />
+            <Label fx:id="t2" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="t3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Label fx:id="t4" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+            <Label fx:id="t5" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+            <Label fx:id="t6" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+            <Label fx:id="t7" GridPane.columnIndex="6" GridPane.rowIndex="2" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../images/WeatherIcons/moreCloud.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../images/WeatherIcons/partRain.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../images/WeatherIcons/sunny.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../images/WeatherIcons/cloudy.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../images/WeatherIcons/partRain.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../images/WeatherIcons/sunny.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@../../../images/WeatherIcons/sunny.png" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
