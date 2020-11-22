@@ -1,6 +1,6 @@
 package application.model;
 
-import java.io.File;
+import java.io.File; 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -27,7 +27,7 @@ public class WeatherWatch {
 	//public static String cityName;
 	private String cityName;
 	private String fileName = "data/city.csv";
-	private String Temp, feelsLike, humidity, windSpeed, latitude, longitude, icon;
+	private String Temp, feelsLike, humidity, windSpeed, latitude, longitude, icon, description;
 	ArrayList<Daily> dailyObjects = new ArrayList<>();
 	ArrayList<Hourly> hourlyObjects = new ArrayList<>();
 	ArrayList<WeatherHistory> weatherHistoryObjects = new ArrayList<>();
@@ -135,8 +135,8 @@ public class WeatherWatch {
 	    Object weather = new JSONParser().parse(jArr.get(0).toString());
 		JSONObject weatherObj = (JSONObject) weather;
 	    setCurrentWeatherIcon(weatherObj.get("icon").toString());
-	 
-		 
+	    setDescription(weatherObj.get("description").toString());
+	    
 
 		//~~ Daily;
 		 JSONArray dArr = (JSONArray) jo.get("daily");
@@ -152,7 +152,7 @@ public class WeatherWatch {
 			 
 			
 			String timeStamp = dailyObj.get("dt").toString();
-			Date date = new Date(Long.parseLong(timeStamp)*1000);
+			Long date = Long.parseLong(timeStamp);
 			  
 			//SetWeather
 			JSONArray dOArr = (JSONArray) dailyObj.get("weather");
@@ -187,7 +187,6 @@ public class WeatherWatch {
 					hourlyObj.get("wind_speed").toString(), weatherObjHourly.get("description").toString(),weatherObjHourly.get("icon").toString(), dateHourly);
 
 			hourlyObjects.add(object);
-		
 		 }
 		
 	}
@@ -226,6 +225,9 @@ public class WeatherWatch {
 	}
 	public void setWindSpeed(String data){
 		this.windSpeed = data;
+	}
+	public void setDescription(String data){
+		this.description = data;
 	}
 	
 	public void setCurrentWeatherIcon(String icon){
@@ -279,6 +281,9 @@ public class WeatherWatch {
 	}
 	public String getWindSpeed(){
 		return this.windSpeed;
+	}
+	public String getDescription(){
+		return this.description;
 	}
 	public String getCurrentWeatherIcon(){
 		return this.icon;

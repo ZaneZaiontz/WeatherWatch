@@ -1,21 +1,23 @@
 package application.model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Daily {
 	
 	private String high, low,  humidity, windSpeed, description, icon;
-	Date date;
+	Long timestamp;
+	//Date date;
 	
 	//~~ Constructor
-	public Daily(String high, String low, String humidity, String windSpeed, String description, String icon, Date date){
+	public Daily(String high, String low, String humidity, String windSpeed, String description, String icon,Long timestamp){
 		this.high = high;
 		this.low = low;
 		this.humidity = humidity;
 		this.windSpeed = windSpeed;
 		this.description = description;
 		this.icon = icon;
-		this.date = date;
+		this.timestamp = timestamp;
 	} 
 	
 	//~~ Setters
@@ -37,16 +39,26 @@ public class Daily {
 	public void setDescription(String data){
 		this.description = data;
 	}
-	public void setDate(Date date){
-		this.date = date;
+	public void setDate(Long date){
+		this.timestamp = date;
 	}
 	
 	//~~ Getters
 	public String getHigh(){
 		return this.high;
 	}
+	public int getHighInt(){
+		Double result = Double.parseDouble(this.high);
+		int degree = (int)Math.round(result);
+		return degree;
+	}
+	public int getLowInt(){
+		Double result = Double.parseDouble(this.low);
+		int degree = (int)Math.round(result);
+		return degree;
+	}
 	public String getLow(){
-		return this.low;
+		return this.low;	
 	}
 	public String getWindSpeed(){
 		return this.windSpeed;
@@ -60,12 +72,19 @@ public class Daily {
 	public String getDescription(){
 		return this.description;
 	}
-	public Date getDate(){
-		return this.date;
+	public Long getDate(){
+		return this.timestamp;
+	}
+	
+	public String getDay(){
+		 Date date = new Date(this.timestamp*1000L);
+		 SimpleDateFormat jdf = new SimpleDateFormat("E dd");
+		 String java_date = jdf.format(date);
+		 return java_date;
 	}
 	
 	//~~ toString()
 	public String toString(){
-		return (this.high + "/" + this.low + "Humidity: " + this.humidity + " " + this.windSpeed + " " + this.date);
+		return (this.high + "/" + this.low + "Humidity: " + this.humidity + " " + this.windSpeed + " " + this.timestamp);
 	}
 }

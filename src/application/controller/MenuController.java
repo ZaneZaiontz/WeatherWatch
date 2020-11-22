@@ -1,10 +1,17 @@
 package application.controller;
 
 import javafx.fxml.FXMLLoader;  
-import javafx.event.ActionEvent; 
+import javafx.event.ActionEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.fxml.*;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import application.Main;
 import application.model.WeatherWatch;
@@ -15,6 +22,8 @@ public class MenuController {
 	private BorderPane mainPane;
 	@FXML
 	private Pane view;
+	@FXML
+	ImageView background;
 	
 	public void initialize(){
 		try{
@@ -39,7 +48,7 @@ public class MenuController {
 	@FXML
 	private void handleButton2Action(ActionEvent event){
 		try{
-			URL fileUrl = Main.class.getResource("/application/view/Radar.fxml");
+			URL fileUrl = Main.class.getResource("/application/view/DetailedWeather.fxml");
 			new FXMLLoader();
 			view = FXMLLoader.load(fileUrl);
 			mainPane.setCenter(view);
@@ -65,4 +74,15 @@ public class MenuController {
 			mainPane.setCenter(view);
 			}catch(Exception e){}
 	} 
+	
+	/*public void setBackground(String fileName){
+		try {
+			Image image = new Image(new FileInputStream(fileName));
+			background.setImage(image);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+	*/
 }

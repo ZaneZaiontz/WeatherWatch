@@ -10,11 +10,10 @@
 
 <AnchorPane maxHeight="800.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MenuController">
    <children>
-      <ImageView fitHeight="928.0" fitWidth="1350.0" layoutX="-89.0" layoutY="-56.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="background" fitHeight="928.0" fitWidth="1350.0" layoutX="-89.0" layoutY="-56.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../images/BackgroundImages/TempBG.png" />
-         </image>
-      </ImageView>
+         </image></ImageView>
       <BorderPane fx:id="mainPane" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <HBox prefHeight="50.0" prefWidth="800.0" BorderPane.alignment="CENTER">
