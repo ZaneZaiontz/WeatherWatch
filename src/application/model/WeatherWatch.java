@@ -59,7 +59,8 @@ public class WeatherWatch {
 		Scanner scan = new Scanner( fileName );
 		if(scan.hasNext()){
 			String line = scan.nextLine();
-			setCityName(line);
+			String tokens[] = line.split(",");
+			setCityName(tokens[0]);
 		}
 		else { setCityName("San Antonio"); }
 		scan.close();
@@ -69,7 +70,7 @@ public class WeatherWatch {
 		FileWriter write = new FileWriter (this.fileName);
 		PrintWriter writeToFile = new PrintWriter(write);
 		
-		writeToFile.println(getCityName());
+		writeToFile.println(String.format("%s,%s,%s", getCityName(), getLatitude(), getLongitude())); // can add more
 		
 		writeToFile.close();
 	}

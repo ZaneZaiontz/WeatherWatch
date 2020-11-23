@@ -97,7 +97,7 @@ public class ForecastController {
 			I7.setImage(img);
 			t7.setText(w.getDailyArray().get(7).getHighInt() + "° " + w.getDailyArray().get(7).getLowInt() + "°" );
 				
-		
+			w.save();
 		}catch(Exception e){}
 		
 	}
