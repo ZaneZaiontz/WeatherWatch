@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 
 /**
@@ -27,6 +28,7 @@ public class Main extends Application {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("view/Menu.fxml"));
 			Parent root = loader.load();
 			primaryStage.setTitle("Weather Watch");
+			primaryStage.getIcons().add(new Image("file:./../images/appIcon.png"));
 			Scene scene = new Scene(root);
 			primaryStage.setResizable(false);
 			primaryStage.setScene(scene);
