@@ -60,13 +60,17 @@ public Long getDate(){
 
 public String getDay(){
 	 Date date = new Date(this.date*1000L);
-	 SimpleDateFormat jdf = new SimpleDateFormat("E dd");
-	 String java_date = jdf.format(date);
-	 return java_date;
+//	 return date.toString();
+//	 SimpleDateFormat jdf = new SimpleDateFormat("E dd");
+	 SimpleDateFormat jdf = new SimpleDateFormat("EEE MM dd hh:mm:ss z");
+	 String newDate = jdf.format(date);
+//	 String java_date = jdf.format(date);
+	 return newDate;
 }
 
 //~~ toString()
 public String toString(){
-	return (this.temp + "Humidity: " + this.humidity + " " + this.windSpeed + " " + this.date);
+	//return (this.temp + "Humidity: " + this.humidity + " " + this.windSpeed + " " + this.date + " " + getDay());
+	return (getDay() + ": " + this.temp + "°F, " + this.humidity + "% humidity, " + this.windSpeed + " mph wind");
 }
 }
