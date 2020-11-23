@@ -22,7 +22,7 @@ public class LocationController {
 	public void initialize(){
 		try{
 			w.loadFile();
-			label.setText("Location: " + w.getCityName());
+			label.setText(w.getCityName());
 			label.setTextFill(Color.WHITE);
 		}catch(IOException e){}
 	}
@@ -30,7 +30,7 @@ public class LocationController {
 	public void handle(ActionEvent a) {
 		try{
 			w.setCityName(city.getText());
-			label.setText("Location: " + w.getCityName());
+			label.setText(w.getCityName());
 			label.setTextFill(Color.WHITE);
 			w.save();
 		}catch(IOException e){}
