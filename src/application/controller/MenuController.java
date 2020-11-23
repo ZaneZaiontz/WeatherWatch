@@ -29,7 +29,7 @@ public class MenuController {
 	
 	public void initialize(){
 		try{
-			URL fileUrl = Main.class.getResource("/application/view/Forecast.fxml");
+			URL fileUrl = Main.class.getResource("/application/view/DetailedWeather.fxml");
 			new FXMLLoader();
 			view = FXMLLoader.load(fileUrl);
 			mainPane.setCenter(view);

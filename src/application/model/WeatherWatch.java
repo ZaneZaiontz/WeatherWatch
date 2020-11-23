@@ -23,7 +23,7 @@ public class WeatherWatch {
 	//public static String cityName;
 	private String cityName;
 	private String fileName = "data/city.csv";
-	private String Temp, feelsLike, humidity, windSpeed, latitude, longitude, icon, description;
+	private String Temp, feelsLike, humidity, windSpeed, latitude, longitude, icon, description, windDegree, weatherMain;
 	ArrayList<Daily> dailyObjects = new ArrayList<>();
 	ArrayList<Hourly> hourlyObjects = new ArrayList<>();
 	
@@ -121,6 +121,7 @@ public class WeatherWatch {
 		setFeelsLike(currentMap.get("feels_like").toString());
 		setHumidity(currentMap.get("humidity").toString());
 		setWindSpeed(currentMap.get("wind_speed").toString());
+		setWindDegree(currentMap.get("wind_deg").toString());
 
 
 		Object obj2 = new JSONParser().parse(jo.get("current").toString());
@@ -130,6 +131,7 @@ public class WeatherWatch {
 	    Object weather = new JSONParser().parse(jArr.get(0).toString());
 		JSONObject weatherObj = (JSONObject) weather;
 	    setCurrentWeatherIcon(weatherObj.get("icon").toString());
+	    setWeatherMain(weatherObj.get("main").toString());
 	    setDescription(weatherObj.get("description").toString());
 	    
 
@@ -219,6 +221,14 @@ public class WeatherWatch {
 		this.description = data;
 	}
 	
+	public void setWindDegree(String data) {
+		this.windDegree = data;
+	}
+	
+	public void setWeatherMain(String data) {
+		this.weatherMain = data;
+	}
+	
 	public void setCurrentWeatherIcon(String icon){
 		if(icon.equals("01d")){
 			this.icon = "clear";
@@ -276,6 +286,14 @@ public class WeatherWatch {
 	}
 	public String getCurrentWeatherIcon(){
 		return this.icon;
+	}
+	
+	public String getWindDegree() {
+		return this.windDegree;
+	}
+	
+	public String getWeatherMain() {
+		return this.weatherMain;
 	}
 	
 	//~~ Daily 
