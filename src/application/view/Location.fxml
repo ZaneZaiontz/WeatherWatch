@@ -7,20 +7,35 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="800.0" maxWidth="800.0" minHeight="800.0" minWidth="800.0" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.LocationController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.LocationController">
    <children>
-    <Pane layoutX="200.0" layoutY="75.0" opacity="0.2" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
-      <TextField fx:id="city" layoutX="300.0" layoutY="250.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" promptText="Enter City" style="-fx-background-radius: 0; -fx-background-color: #909090;">
-         <font>
-            <Font name="Arial Italic" size="22.0" />
-         </font>
-      </TextField>
-      <Button fx:id="submit" layoutX="352.0" layoutY="320.0" mnemonicParsing="false" onAction="#handle" style="-fx-background-color: #909090; -fx-background-radius: 0;" text="Search" textFill="WHITE" />
-      <Label fx:id="label" alignment="CENTER" layoutY="150.0" prefWidth="800.0" />
-      <Label alignment="CENTER" layoutY="200.0" prefWidth="800.0" text="Enter City Name:" textFill="WHITE">
-         <font>
-            <Font name="Arial" size="22.0" />
-         </font>
-      </Label>
+      <Pane layoutX="400.0" layoutY="50.0" opacity="0.2" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: #000000;" />
+    <Pane layoutX="400.0" layoutY="50.0" prefHeight="400.0" prefWidth="400.0">
+         <children>
+            <Label alignment="CENTER" layoutX="100.0" layoutY="134.0" prefWidth="200.0" text="Enter City Name:" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="22.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </Label>
+            <Button fx:id="submit" layoutX="173.0" layoutY="243.0" mnemonicParsing="false" onAction="#handle" style="-fx-background-color: #909090; -fx-background-radius: 0;" text="Search" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="12.0" />
+               </font>
+            </Button>
+            <TextField fx:id="city" layoutX="100.0" layoutY="167.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="200.0" promptText="      Enter City" style="-fx-background-radius: 0; -fx-background-color: #909090;">
+               <font>
+                  <Font name="Arial Italic" size="22.0" />
+               </font>
+            </TextField>
+            <Label fx:id="label" alignment="CENTER" layoutX="100.0" layoutY="79.0" prefWidth="200.0">
+               <font>
+                  <Font name="Arial" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
