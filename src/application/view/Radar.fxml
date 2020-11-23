@@ -10,7 +10,6 @@
 
 <AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.RadarController">
    <children>
-   		<Label fx:id="label" alignment="CENTER" layoutY="100.0" maxWidth="800.0" minWidth="800.0" prefWidth="800.0" textAlignment="CENTER" textFill="BLACK" />
-      <StackPane fx:id="fStack" prefHeight="800.0" prefWidth="1200.0" />
+      <StackPane fx:id="fStack" prefHeight="750.0" prefWidth="1200.0" />
    </children>
 </AnchorPane>

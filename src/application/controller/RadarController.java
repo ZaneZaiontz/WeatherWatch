@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.Scanner;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.web.WebEngine;
@@ -13,15 +12,12 @@ import javafx.scene.web.WebView;
 
 public class RadarController {
 
-	@FXML
-	Label label;
 	@FXML 
 	StackPane fStack;
 	@FXML 
 	AnchorPane root;
 
 	public void initialize()throws IOException{
-		label.setText("Radar");
 		File file = new File("data/city.csv");
 		Scanner s1 = new Scanner(file);
 		String line = s1.nextLine();
