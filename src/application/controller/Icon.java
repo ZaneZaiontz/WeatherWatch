@@ -84,10 +84,6 @@ public class Icon {
 		}
 		else if(this.weatherResult.equals("moreclouds")){
 			return "images/WeatherIcons/moreCloud.png";
-			/*MenuController mc = new MenuController();
-			//File f = new File("src/BackgroundImages/TempBG.png");
-			String input = "images/BackgroundImages/TempBG.png";
-			mc.setBackground(input);*/
 		}
 		else if(this.weatherResult.equals("rain")){
 			return "images/WeatherIcons/rain.png";
