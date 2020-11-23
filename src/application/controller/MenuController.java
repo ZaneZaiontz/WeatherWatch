@@ -77,14 +77,10 @@ public class MenuController {
 			}catch(Exception e){}
 	} 
 	
-	/*public void setBackground(String fileName){
-		try {
-			Image image = new Image(new FileInputStream(fileName));
-			background.setImage(image);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-			
-	*/
+	public void setBackground(String fileName){
+		 System.out.println("Is loaded: " );
+		//	Image image = new Image(fileName);
+		//	 System.out.println("Is loaded: " + image.isError());
+		//	background.setImage(image);
+	}
 }

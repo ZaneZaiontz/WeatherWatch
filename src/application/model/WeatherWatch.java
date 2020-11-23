@@ -218,46 +218,11 @@ public class WeatherWatch {
 	public void setDescription(String data){
 		this.description = data;
 	}
-	
-	public void setCurrentWeatherIcon(String icon){
-		if(icon.equals("01d")){
-			this.icon = "clear";
-		}
-		else if(icon.equals("01n")){
-			this.icon = "clear night";
-		}
-		else if(icon.equals("02d")){
-			this.icon = "cloudSunny";
-		}
-		else if(icon.equals("02n")){
-			this.icon = "cloudNight";
-		}
-		else if(icon.equals("03d") || icon.equals("03n")){
-			this.icon = "clouds";
-		}
-		else if(icon.equals("04d") || icon.equals("04n")){
-			this.icon = "moreclouds";
-		}
-		else if(icon.equals("09d") || icon.equals("09n")){
-			this.icon = "rain";
-		}
-		else if(icon.equals("10d")){
-			this.icon = "rainSun";
-		}
-		else if(icon.equals("10n")){
-			this.icon = "rainNight";
-		}
-		else if(icon.equals("11d") || icon.equals("11n")){
-			this.icon = "thunderstorm";
-		}
-		else if(icon.equals("13d") || icon.equals("13n")){
-			this.icon = "snow";
-		}
-		else if(icon.equals("50d") ||  icon.equals("50n")){
-			this.icon = "mist";
-		}
-		else { this.icon = "mist";}
+	public void setCurrentWeatherIcon(String data){
+		this.icon = data;
 	}
+	
+	
 	
 	public String getTemp(){
 		return this.Temp;
