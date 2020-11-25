@@ -29,10 +29,13 @@ public class LocationController {
 	
 	public void handle(ActionEvent a) {
 		try{
-			w.setCityName(city.getText());
-			label.setText(w.getCityName());
-			label.setTextFill(Color.WHITE);
-			w.save();
+			if(!city.getText().isEmpty())
+			{
+				w.setCityName(city.getText());
+				label.setText(w.getCityName());
+				label.setTextFill(Color.WHITE);
+				w.save();
+			}
 		}catch(IOException e){}
 	}
 
