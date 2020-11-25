@@ -18,41 +18,72 @@ import org.json.simple.parser.JSONParser;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+/**
+ * 
+ * @author Gabrielle Albrecht/ypo253
+ *
+ */
 
 public class WeatherWatch {
-	//public static String cityName;
 	private String cityName;
 	private String fileName = "data/city.csv";
 	private String Temp, feelsLike, humidity, windSpeed, latitude, longitude, icon, description, windDegree, weatherMain;
 	ArrayList<Daily> dailyObjects = new ArrayList<>();
 	ArrayList<Hourly> hourlyObjects = new ArrayList<>();
 	
+	/**
+	 * 
+	 */
 	public WeatherWatch() {
 	}
 	
+	/**
+	 * 
+	 * @param cityName
+	 */
 	public WeatherWatch(String cityName) {
 		
 		this.cityName = cityName;
 	}
 	
+	/**
+	 * 
+	 * @param cityName
+	 */
 	public void setCityName(String cityName){
 		this.cityName = cityName;
 		
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getCityName(){
 		return this.cityName;
 	}
 	
+	/**
+	 * 
+	 * @param fileName
+	 */
 	public void setFileName(String fileName){
 		this.fileName = fileName;
 		
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getFileName(){
 		return this.fileName;
 	}
 	
+	/**
+	 * 
+	 * @throws IOException
+	 */
 	public void loadFile() throws IOException {
 		File fileName = new File(this.fileName);
 		
@@ -66,6 +97,10 @@ public class WeatherWatch {
 		scan.close();
 	}
 	
+	/**
+	 * 
+	 * @throws IOException
+	 */
 	public void save() throws IOException{
 		FileWriter write = new FileWriter (this.fileName);
 		PrintWriter writeToFile = new PrintWriter(write);
@@ -75,12 +110,21 @@ public class WeatherWatch {
 		writeToFile.close();
 	}
 	
+	/**
+	 * 
+	 * @param str
+	 * @return
+	 */
 	public static Map<String, Object> jsonToMap(String str) {
 		Map<String, Object> map = new Gson().fromJson(str, new TypeToken<HashMap<String, Object>>() {}.getType());
 		return map;
 	} 
 	
 	//~~ Current
+	/**
+	 * 
+	 * @throws Exception
+	 */
 	public void analyzeCurrent() throws Exception{
 
 		URL url = new URL("http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=48fb3ffd07fec36d9f2a24f46772bada&units=imperial");
@@ -100,6 +144,10 @@ public class WeatherWatch {
 			
 
 	//~~ OneCall
+	/**
+	 * 
+	 * @throws Exception
+	 */
 	public void analyzeOneCall() throws Exception{
 		//https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}&units={units}
 		
@@ -190,93 +238,197 @@ public class WeatherWatch {
 	}
 	
 	//Set Latitude and longitude
+	/**
+	 * 
+	 * @param data
+	 */
 	public void setLatitude(String data){
 		this.latitude = data;
 	}
+	/**
+	 * 
+	 * @param data
+	 */
 	public void setLongitude(String data){
 		this.longitude = data;
 	}
 	
 	//Get Latitude and longitude
+	/**
+	 * 
+	 * @return
+	 */
 	public String getLatitude(){
 		return this.latitude;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getLongitude(){
 		return this.longitude;
 	}
 	
 	//~~ Current
+	/**
+	 * 
+	 * @param data
+	 */
 	public void setTemp(String data){
 		this.Temp = data;
 	}
+	
+	/**
+	 * 
+	 * @param data
+	 */
 	public void setFeelsLike(String data){
 		this.feelsLike = data;
 	}
+	
+	/**
+	 * 
+	 * @param data
+	 */
 	public void setHumidity(String data){
 		this.humidity = data;
 	}
+	
+	/**
+	 * 
+	 * @param data
+	 */
 	public void setWindSpeed(String data){
 		this.windSpeed = data;
 	}
+	
+	/**
+	 * 
+	 * @param data
+	 */
 	public void setDescription(String data){
 		this.description = data;
 	}
+	
+	/**
+	 * 
+	 * @param data
+	 */
 	public void setCurrentWeatherIcon(String data){
 		this.icon = data;
 	}
-	
-	
+
+	/**
+	 * 
+	 * @param data
+	 */
 	public void setWindDegree(String data) {
 		this.windDegree = data;
 	}
 	
+	/**
+	 * 
+	 * @param data
+	 */
 	public void setWeatherMain(String data) {
 		this.weatherMain = data;
 	}
 	
-	
+
+	/**
+	 * 
+	 * @return
+	 */
 	public String getTemp(){
 		return this.Temp;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getFeelsLike(){
 		return this.feelsLike;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getHumidity(){
 		return this.humidity;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getWindSpeed(){
 		return this.windSpeed;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getDescription(){
 		return this.description;
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getCurrentWeatherIcon(){
 		return this.icon;
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getWindDegree() {
-		return this.windDegree;
+		return this.windDegree; 
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getWeatherMain() {
 		return this.weatherMain;
 	}
 	
 	//~~ Daily 
+	/**
+	 * 
+	 */
 	public void setDailyArray(){
 		
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<Daily> getDailyArray(){
 		return this.dailyObjects;
 	}
 	
 	
 	//~~ Hourly
-	
+	/**
+	 * 
+	 */
 	public void setHourlyArray(){ 
 		
 	}
+	
+	/**
+	 * 
+	 * @return
+	 */
 	public ArrayList<Hourly> getHourlyArray(){
 		return this.hourlyObjects;
 	}
