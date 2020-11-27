@@ -19,7 +19,11 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 /**
- * 
+ * WeatherWatch.java gets current weather for a city, 
+ * creates class objects of daily weather info and stores them in an ArrayList,
+ * creates class objects of horuly weather info and stores them in an ArrayList,  
+ * returns weather information. 
+ *
  * @author Gabrielle Albrecht/ypo253
  *
  */
@@ -32,14 +36,14 @@ public class WeatherWatch {
 	ArrayList<Hourly> hourlyObjects = new ArrayList<>();
 	
 	/**
-	 * 
+	 * Default constructor
 	 */
 	public WeatherWatch() {
 	}
 	
 	/**
-	 * 
-	 * @param cityName
+	 * Constructor - sets cityName
+	 * @param cityName Sets the name of the city to get the weather info for.
 	 */
 	public WeatherWatch(String cityName) {
 		
@@ -48,7 +52,7 @@ public class WeatherWatch {
 	
 	/**
 	 * 
-	 * @param cityName
+	 * @param cityName Sets the name of the city to get the weather info for.
 	 */
 	public void setCityName(String cityName){
 		this.cityName = cityName;
@@ -57,7 +61,7 @@ public class WeatherWatch {
 	
 	/**
 	 * 
-	 * @return
+	 * @return cityName of the city that is being used to get weather info.
 	 */
 	public String getCityName(){
 		return this.cityName;
@@ -240,14 +244,14 @@ public class WeatherWatch {
 	//Set Latitude and longitude
 	/**
 	 * 
-	 * @param data
+	 * @param data sets the latitude of the city used to get weather info for
 	 */
 	public void setLatitude(String data){
 		this.latitude = data;
 	}
 	/**
 	 * 
-	 * @param data
+	 * @param data sets the longitude of the city used to get weather info for
 	 */
 	public void setLongitude(String data){
 		this.longitude = data;
@@ -256,7 +260,7 @@ public class WeatherWatch {
 	//Get Latitude and longitude
 	/**
 	 * 
-	 * @return
+	 * @return latitude of the city used to get weather info for.
 	 */
 	public String getLatitude(){
 		return this.latitude;
@@ -264,7 +268,7 @@ public class WeatherWatch {
 	
 	/**
 	 * 
-	 * @return
+	 * @return longitude of the city used to get weather info for.
 	 */
 	public String getLongitude(){
 		return this.longitude;
@@ -273,7 +277,7 @@ public class WeatherWatch {
 	//~~ Current
 	/**
 	 * 
-	 * @param data
+	 * @param data used to set the current Temp
 	 */
 	public void setTemp(String data){
 		this.Temp = data;
@@ -281,7 +285,7 @@ public class WeatherWatch {
 	
 	/**
 	 * 
-	 * @param data
+	 * @param data is used to set the current feelsLike 
 	 */
 	public void setFeelsLike(String data){
 		this.feelsLike = data;
@@ -289,7 +293,7 @@ public class WeatherWatch {
 	
 	/**
 	 * 
-	 * @param data
+	 * @param data is used to set the current humidity
 	 */
 	public void setHumidity(String data){
 		this.humidity = data;
@@ -297,7 +301,7 @@ public class WeatherWatch {
 	
 	/**
 	 * 
-	 * @param data
+	 * @param data is used to set the current windSpeed
 	 */
 	public void setWindSpeed(String data){
 		this.windSpeed = data;
@@ -305,7 +309,7 @@ public class WeatherWatch {
 	
 	/**
 	 * 
-	 * @param data
+	 * @param data is used to set the current weather description
 	 */
 	public void setDescription(String data){
 		this.description = data;
@@ -313,7 +317,7 @@ public class WeatherWatch {
 	
 	/**
 	 * 
-	 * @param data
+	 * @param data is used to set the current weather icon.
 	 */
 	public void setCurrentWeatherIcon(String data){
 		this.icon = data;
@@ -321,7 +325,7 @@ public class WeatherWatch {
 
 	/**
 	 * 
-	 * @param data
+	 * @param data is used to set the current windDegree
 	 */
 	public void setWindDegree(String data) {
 		this.windDegree = data;
@@ -329,7 +333,7 @@ public class WeatherWatch {
 	
 	/**
 	 * 
-	 * @param data
+	 * @param data is used to set weatherMain
 	 */
 	public void setWeatherMain(String data) {
 		this.weatherMain = data;
@@ -338,7 +342,7 @@ public class WeatherWatch {
 
 	/**
 	 * 
-	 * @return
+	 * @return Temp the current temperature
 	 */
 	public String getTemp(){
 		return this.Temp;
@@ -346,7 +350,7 @@ public class WeatherWatch {
 	
 	/**
 	 * 
-	 * @return
+	 * @return feelsLike the current weather feelsLike
 	 */
 	public String getFeelsLike(){
 		return this.feelsLike;
@@ -354,7 +358,7 @@ public class WeatherWatch {
 	
 	/**
 	 * 
-	 * @return
+	 * @return humidity the current humidity
 	 */
 	public String getHumidity(){
 		return this.humidity;
