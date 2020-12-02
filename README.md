@@ -34,3 +34,10 @@ __Search Menu:__
 * Enter in the name of the City you would like view the weather of into the search bar.
 * Will set the current City to the choice entered by the user 
  and now the the rest of the menu options will show the weather for the city entered by the user.
+ 
+ 
+ __Installation:__
+ * Required for proper functionality 
+    * Java SE Development Kit 8
+    * Eclipse Neon - to display the program correctly
+    
