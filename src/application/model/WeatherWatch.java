@@ -25,6 +25,11 @@ import com.google.gson.reflect.TypeToken;
  * returns weather information. 
  *
  * @author Gabrielle Albrecht/ypo253
+ * @author Zane Zaiontz
+ * @author Dariel Malave Perez 
+ * 
+ * UTSA CS 3443 - Team Project
+ * Fall 2020
  *
  */
 
@@ -32,6 +37,7 @@ public class WeatherWatch {
 	private String cityName;
 	private String fileName = "data/city.csv";
 	private String Temp, feelsLike, humidity, windSpeed, latitude, longitude, icon, description, windDegree, weatherMain;
+
 	ArrayList<Daily> dailyObjects = new ArrayList<>();
 	ArrayList<Hourly> hourlyObjects = new ArrayList<>();
 	
@@ -51,7 +57,7 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
+	 * Set the CityName - takes in a String
 	 * @param cityName Sets the name of the city to get the weather info for.
 	 */
 	public void setCityName(String cityName){
@@ -60,7 +66,7 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
+	 * Get the CityName
 	 * @return cityName of the city that is being used to get weather info.
 	 */
 	public String getCityName(){
@@ -68,8 +74,8 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
-	 * @param fileName
+	 * Set the FileName
+	 * @param fileName set the filename that contains the city name(String)
 	 */
 	public void setFileName(String fileName){
 		this.fileName = fileName;
@@ -77,16 +83,16 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the FileName
+	 * @return fileName that contains the city name
 	 */
 	public String getFileName(){
 		return this.fileName;
 	}
 	
 	/**
-	 * 
-	 * @throws IOException
+	 * loadFile load the cityName file
+	 * @throws IOException if loadFile fails
 	 */
 	public void loadFile() throws IOException {
 		File fileName = new File(this.fileName);
@@ -102,8 +108,8 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
-	 * @throws IOException
+	 * save city name and longitude and latitude to the cityName file
+	 * @throws IOException if save fails
 	 */
 	public void save() throws IOException{
 		FileWriter write = new FileWriter (this.fileName);
@@ -115,9 +121,9 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
-	 * @param str
-	 * @return
+	 * Map
+	 * @param str the string containing all the weather information
+	 * @return map the hashmap containing weather information
 	 */
 	public static Map<String, Object> jsonToMap(String str) {
 		Map<String, Object> map = new Gson().fromJson(str, new TypeToken<HashMap<String, Object>>() {}.getType());
@@ -126,8 +132,8 @@ public class WeatherWatch {
 	
 	//~~ Current
 	/**
-	 * 
-	 * @throws Exception
+	 * analyzeCurrent weather
+	 * @throws Exception if analyzeCurrent fails
 	 */
 	public void analyzeCurrent() throws Exception{
 
@@ -149,11 +155,12 @@ public class WeatherWatch {
 
 	//~~ OneCall
 	/**
-	 * 
-	 * @throws Exception
+	 * analyzeOneCall
+	 * @throws Exception if analyzeOneCall fails
 	 */
 	public void analyzeOneCall() throws Exception{
-		//https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}&units={units}
+		// Example of call:
+		// https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}&units={units}
 		
 		URL url = new URL("https://api.openweathermap.org/data/2.5/onecall?" + "lat=" + getLatitude() + "&lon=" + getLongitude() + "&appid=48fb3ffd07fec36d9f2a24f46772bada&units=imperial");
 		
@@ -176,7 +183,6 @@ public class WeatherWatch {
 		setWindSpeed(currentMap.get("wind_speed").toString());
 		setWindDegree(currentMap.get("wind_deg").toString());
 
-
 		Object obj2 = new JSONParser().parse(jo.get("current").toString());
 		JSONObject jo2 = (JSONObject) obj2; 
 		JSONArray jArr = (JSONArray) jo2.get("weather");
@@ -198,7 +204,6 @@ public class WeatherWatch {
 			JSONObject dailyObj = (JSONObject) daily; 
 			
 			Map<String, Object> tempMap = jsonToMap(dailyObj.get("temp").toString());
-			//Map<String, Object> feelsLikeMap = jsonToMap(dailyObj.get("feels_like").toString());
 			
 			String timeStamp = dailyObj.get("dt").toString();
 			Long date = Long.parseLong(timeStamp);
@@ -226,7 +231,6 @@ public class WeatherWatch {
 			 
 			String timeStampHourly = hourlyObj.get("dt").toString();
 			Long dateHourly = Long.parseLong(timeStampHourly);
-			//Date dateHourly = new Date(Long.parseLong(timeStampHourly)*1000);
 			
 			//SetWeather
 			JSONArray hOArr = (JSONArray) (hourlyObj.get("weather"));
@@ -243,14 +247,14 @@ public class WeatherWatch {
 	
 	//Set Latitude and longitude
 	/**
-	 * 
+	 * Set the Latitude of the city used to get weather info for
 	 * @param data sets the latitude of the city used to get weather info for
 	 */
 	public void setLatitude(String data){
 		this.latitude = data;
 	}
 	/**
-	 * 
+	 * Set the Longitude of the city used to get weather info for
 	 * @param data sets the longitude of the city used to get weather info for
 	 */
 	public void setLongitude(String data){
@@ -259,7 +263,7 @@ public class WeatherWatch {
 	
 	//Get Latitude and longitude
 	/**
-	 * 
+	 * Get the Latitude of the city used to get weather info for
 	 * @return latitude of the city used to get weather info for.
 	 */
 	public String getLatitude(){
@@ -267,7 +271,7 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
+	 * Get the Longitude of the city used to get weather info for
 	 * @return longitude of the city used to get weather info for.
 	 */
 	public String getLongitude(){
@@ -276,7 +280,7 @@ public class WeatherWatch {
 	
 	//~~ Current
 	/**
-	 * 
+	 * Set the current Temp
 	 * @param data used to set the current Temp
 	 */
 	public void setTemp(String data){
@@ -284,7 +288,7 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
+	 * Set the current FeelsLike 
 	 * @param data is used to set the current feelsLike 
 	 */
 	public void setFeelsLike(String data){
@@ -292,7 +296,7 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
+	 * Set the current Humidity
 	 * @param data is used to set the current humidity
 	 */
 	public void setHumidity(String data){
@@ -300,7 +304,7 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
+	 * Set the current WindSpeed
 	 * @param data is used to set the current windSpeed
 	 */
 	public void setWindSpeed(String data){
@@ -308,7 +312,7 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
+	 * Set the current weather Description
 	 * @param data is used to set the current weather description
 	 */
 	public void setDescription(String data){
@@ -316,7 +320,7 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
+	 * Set the CurrentWeatherIcon
 	 * @param data is used to set the current weather icon.
 	 */
 	public void setCurrentWeatherIcon(String data){
@@ -324,7 +328,7 @@ public class WeatherWatch {
 	}
 
 	/**
-	 * 
+	 * Set the current windDegree
 	 * @param data is used to set the current windDegree
 	 */
 	public void setWindDegree(String data) {
@@ -332,7 +336,7 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
+	 * Set the current WeatherMain
 	 * @param data is used to set weatherMain
 	 */
 	public void setWeatherMain(String data) {
@@ -341,7 +345,7 @@ public class WeatherWatch {
 	
 
 	/**
-	 * 
+	 * Get the current Temp
 	 * @return Temp the current temperature
 	 */
 	public String getTemp(){
@@ -349,7 +353,7 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
+	 * Get the current weather FeelsLike
 	 * @return feelsLike the current weather feelsLike
 	 */
 	public String getFeelsLike(){
@@ -357,7 +361,7 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
+	 * Get the current Humidity
 	 * @return humidity the current humidity
 	 */
 	public String getHumidity(){
@@ -365,40 +369,40 @@ public class WeatherWatch {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the current WindSpeed
+	 * @return windSpeed the current wind speed
 	 */
 	public String getWindSpeed(){
 		return this.windSpeed;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the current weather description
+	 * @return description the current weather description
 	 */
 	public String getDescription(){
 		return this.description;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the CurrentWeatherIcon
+	 * @return icon the current weather icon
 	 */
 	public String getCurrentWeatherIcon(){
 		return this.icon;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the current WindDegree
+	 * @return windDegree the current wind degree
 	 */
 	public String getWindDegree() {
 		return this.windDegree; 
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the current WeatherMain
+	 * @return weatherMain the current weather main info
 	 */
 	public String getWeatherMain() {
 		return this.weatherMain;
@@ -406,15 +410,16 @@ public class WeatherWatch {
 	
 	//~~ Daily 
 	/**
-	 * 
+	 * set DailyArray
+	 * @param data set arrayList of daily objects
 	 */
-	public void setDailyArray(){
-		
+	public void setDailyArray(ArrayList<Daily> data){
+		this.dailyObjects = data;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get DailyArray
+	 * @return dailyObjects arrayList of daily objects
 	 */
 	public ArrayList<Daily> getDailyArray(){
 		return this.dailyObjects;
@@ -423,15 +428,16 @@ public class WeatherWatch {
 	
 	//~~ Hourly
 	/**
-	 * 
+	 *  set HourlyArray
+	 * @param data set arrayList of hourly objects
 	 */
-	public void setHourlyArray(){ 
-		
+	public void setHourlyArray(ArrayList<Hourly> data){ 
+		this.hourlyObjects = data;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get hourlyArray
+	 * @return hourlyObjects arrayList of hourly objects
 	 */
 	public ArrayList<Hourly> getHourlyArray(){
 		return this.hourlyObjects;

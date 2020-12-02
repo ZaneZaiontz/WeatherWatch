@@ -1,89 +1,58 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.DetailedWeatherController">
+<AnchorPane maxHeight="800.0" maxWidth="1200.0" minHeight="800.0" minWidth="800.0" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.DetailedWeatherController">
    <children>
-      <Pane layoutX="50.0" layoutY="150.0" opacity="0.2" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #000000;" />
-      <Pane layoutX="650.0" layoutY="150.0" opacity="0.2" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #000000;" />
-      <BorderPane prefHeight="150.0" prefWidth="1200.0">
-         <top>
-            <Label text="Detailed Weather Information" textFill="WHITE" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="Arial Bold" size="35.0" />
-               </font>
-            </Label>
-         </top>
-         <center>
-            <Label fx:id="cityName" text="City Name" textFill="WHITE" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="Arial" size="40.0" />
-               </font>
-               <BorderPane.margin>
-                  <Insets bottom="25.0" />
-               </BorderPane.margin>
-            </Label>
-         </center>
-      </BorderPane>
-      <FlowPane layoutX="650.0" layoutY="150.0" orientation="VERTICAL" prefHeight="250.0" prefWidth="500.0" vgap="20.0">
-         <children>
-            <Label fx:id="windDegree" text="windDegree" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="weather" text="weather" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="description" text="description" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </Label>
-         </children>
-      </FlowPane>
-      <FlowPane layoutX="50.0" layoutY="150.0" orientation="VERTICAL" prefHeight="250.0" prefWidth="500.0" vgap="20.0">
-         <children>
-            <Label fx:id="temp" text="Temperature" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="feels_like" text="Feels like" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="humidity" text="Humidity" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </Label>
-            <Label fx:id="windSpeed" text="windSpeed" textFill="WHITE">
-               <font>
-                  <Font size="25.0" />
-               </font>
-            </Label>
-         </children>
-      </FlowPane>
-      <Label fx:id="label" alignment="CENTER" layoutX="207.0" layoutY="392.0" prefWidth="800.0" textFill="WHITE" />
-      <ListView fx:id="hourly1" layoutX="50.0" layoutY="448.0" opacity="0.85" prefHeight="250.0" prefWidth="500.0" />
-      <ListView fx:id="hourly2" layoutX="650.0" layoutY="448.0" opacity="0.85" prefHeight="250.0" prefWidth="500.0" />
-      <FlowPane layoutX="350.0" layoutY="375.0" prefHeight="50.0" prefWidth="500.0">
-         <children>
-            <Label fx:id="hourly" alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="500.0" text="Hourly" textAlignment="CENTER" textFill="WHITE">
-               <font>
-                  <Font name="Arial" size="25.0" />
-               </font>
-            </Label>
-         </children>
-      </FlowPane>
+   	  <Pane layoutX="50.0" layoutY="20.0" opacity="0.2" prefHeight="400.0" prefWidth="1100.0" style="-fx-background-color: #000000;" />
+      <Label fx:id="label" alignment="CENTER" layoutY="200.0" prefWidth="800.0" />
+      <Label fx:id="cityName" alignment="CENTER" layoutY="75.0" prefWidth="1200.0" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label fx:id="temp" layoutX="200.0" layoutY="150.0" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+      <Label fx:id="feels_like" layoutX="200.0" layoutY="200.0" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+      <Label fx:id="humidity" layoutX="200.0" layoutY="250.0" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+      <Label fx:id="windSpeed" layoutX="200.0" layoutY="300.0" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+      <Label fx:id="windDegree" layoutX="700.0" layoutY="150.0" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+      <Label fx:id="weather" layoutX="700.0" layoutY="200.0" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+      <Label fx:id="description" layoutX="700.0" layoutY="250.0" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font></Label>
+      <Label layoutX="350.0" layoutY="31.0" text="More Weather Information:" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="35.0" />
+         </font>
+      </Label>
+      <Label fx:id="hourly" layoutX="200.0" layoutY="379.0" textFill="WHITE">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Label>
+      <ListView fx:id="hourly1" layoutX="200.0" layoutY="448.0" prefHeight="300.0" prefWidth="800.0" />
    </children>
 </AnchorPane>

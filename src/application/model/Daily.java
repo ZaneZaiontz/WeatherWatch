@@ -4,9 +4,19 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
+ * This class represents the Daily weather
+ * 	It has:
+ * 		the high and low temperature for a day
+ * 		humidity, windspeed, pop (probability of precipitation)  
+ * 		the description of the weather
+ * 		the weather icon
+ * 		the timestamp - the date the weather info is for
  * 
  * @author Gabrielle Albrecht/ypo253
- *
+ * @author Dariel Malave Perez
+ * 
+ * UTSA CS 3443 - Team Project
+ * Fall 2020
  */
 
 public class Daily {
@@ -17,14 +27,14 @@ public class Daily {
 	//~~ Constructor
 	/**
 	 * 
-	 * @param high
-	 * @param low
-	 * @param humidity
-	 * @param windSpeed
-	 * @param pop
-	 * @param description
-	 * @param icon
-	 * @param timestamp
+	 * @param high sets the daily high temp (String)
+	 * @param low sets the daily low temp (String)
+	 * @param humidity sets the daily humidity (String)
+	 * @param windSpeed sets the daily windspeed (String)
+	 * @param pop sets the daily pop (String)
+	 * @param description sets the daily description (String)
+	 * @param icon sets the daily icon (String)
+	 * @param timestamp sets the daily timestamp (Long)
 	 */
 	public Daily(String high, String low, String humidity, String windSpeed,String pop, String description, String icon,Long timestamp){
 		this.high = high;
@@ -39,62 +49,62 @@ public class Daily {
 	
 	//~~ Setters
 	/**
-	 * 
-	 * @param data
+	 * Set the daily high temperature
+	 * @param data the daily high temperature (String)
 	 */
 	public void setHigh(String data){
 		this.high = data;
 	}
 	/**
-	 * 
-	 * @param data
+	 * Set the daily low temperature
+	 * @param data the daily low temperature (String)
 	 */
 	public void setLow(String data){
 		this.low = data;
 	}
 	/**
-	 * 
-	 * @param data
+	 * Set the WindSpeed for daily weather
+	 * @param data set the daily windSpeed (String)
 	 */
 	public void setWindSpeed(String data){
 		this.windSpeed = data;
 	}
 	
 	/**
-	 * 
-	 * @param data
+	 * Set the Humidity for daily weather
+	 * @param data set the daily humidity (String)
 	 */
 	public void setHumidity(String data){
 		this.humidity = data;
 	}
 	
 	/**
-	 * 
-	 * @param data
+	 * Set the Icon for daily weather
+	 * @param data set the Icon with the daily weather icon (String)
 	 */
 	public void setIcon(String data){
 		this.icon = data;
 	}
 	
 	/**
-	 * 
-	 * @param data
+	 * Set the Description for daily weather
+	 * @param data set the description with the daily weather description (String)
 	 */
 	public void setDescription(String data){
 		this.description = data;
 	}
 	
 	/**
-	 * 
-	 * @param data
+	 * Set the Probability for Precipitation- Pop for daily weather
+	 * @param data set the pop with the daily weather pop (String)
 	 */
 	public void setPop(String data){
 		this.pop = data;
 	}
 	
 	/**
-	 * 
-	 * @param date
+	 * Set the Date for daily weather
+	 * @param date set the date with the daily weather date (Long)
 	 */
 	public void setDate(Long date){
 		this.timestamp = date;
@@ -102,16 +112,16 @@ public class Daily {
 	
 	//~~ Getters
 	/**
-	 * 
-	 * @return
+	 * Get the High for daily weather
+	 * @return high the daily high temperature (String)
 	 */
 	public String getHigh(){
 		return this.high;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the HighInt for daily weather
+	 * @return degree the high temperature rounded to nearest degree (int)
 	 */
 	public int getHighInt(){
 		Double result = Double.parseDouble(this.high);
@@ -120,8 +130,8 @@ public class Daily {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the LowInt for daily weather
+	 * @return degree the low temperature rounded to nearest degree (int)
 	 */
 	public int getLowInt(){
 		Double result = Double.parseDouble(this.low);
@@ -130,64 +140,64 @@ public class Daily {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the Low for daily weather
+	 * @return low the daily low temperature (String)
 	 */
 	public String getLow(){
 		return this.low;	
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the WindSpeed for daily weather
+	 * @return windSpeed of daily weather
 	 */
 	public String getWindSpeed(){
 		return this.windSpeed;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the Humidity for daily weather
+	 * @return humidity of daily weather
 	 */
 	public String getHumidity(){
 		return this.humidity;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the Icon for daily weather
+	 * @return icon of the daily weather
 	 */
 	public String getIcon(){
 		return this.icon;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the Description for daily weather
+	 * @return description of the daily weather
 	 */
 	public String getDescription(){
 		return this.description;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the Date for daily weather
+	 * @return timestamp the date of the daily weather
 	 */
 	public Long getDate(){
 		return this.timestamp;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the Pop, Probability of Precipitation, for daily weather
+	 * @return pop the probability of precipitation (String)
 	 */
 	public String getPop(){
 		return this.pop;
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the percent of pop for daily weather
+	 * @return percent of pop (double)
 	 */
 	public double getPopPercent(){
 		Double result = Double.parseDouble(this.pop);
@@ -197,8 +207,8 @@ public class Daily {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Get the day for the daily weather
+	 * @return java_date the day for the weather information (String)
 	 */
 	public String getDay(){
 		 Date date = new Date(this.timestamp*1000L);
@@ -209,7 +219,8 @@ public class Daily {
 	
 	//~~ toString()
 	/**
-	 * 
+	 * toString() prints the daily weather, returns a String
+	 * @return data String to print the daily weather information
 	 */
 	public String toString(){
 		return (this.high + "/" + this.low + "Humidity: " + this.humidity + " " + this.windSpeed + " " + this.timestamp);

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.geometry.*?>
@@ -10,10 +11,7 @@
 
 <AnchorPane maxHeight="800.0" maxWidth="1200.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MenuController">
    <children>
-      <ImageView fx:id="background" fitHeight="928.0" fitWidth="1350.0" layoutX="-89.0" layoutY="-56.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../images/BackgroundImages/TempBG.png" />
-         </image></ImageView>
+      <ImageView fx:id="background" fitHeight="928.0" fitWidth="1350.0" layoutX="-89.0" layoutY="-56.0" pickOnBounds="true" preserveRatio="true" />
       <BorderPane fx:id="mainPane" prefHeight="540.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <top>
             <HBox prefHeight="50.0" prefWidth="800.0" BorderPane.alignment="CENTER">
@@ -57,5 +55,10 @@
             </HBox>
          </top>
       </BorderPane>
+      <Label fx:id="label" alignment="CENTER" layoutY="300.0" prefWidth="1200.0" textFill="#ff0505">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

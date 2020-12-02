@@ -1,23 +1,31 @@
 package application.controller;
 
-import javafx.fxml.FXMLLoader;  
+import javafx.fxml.FXMLLoader;    
 import javafx.event.ActionEvent;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.fxml.*;
-
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URL;
-import application.Main;
+import application.model.Icon;
 import application.model.WeatherWatch;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
- 
+
+/**
+ * This class represents the MenuController
+ *
+ * Sets the view;
+ * Calls each of the controller when they are clicked and sets the view
+ * with the information from that controller
+ * 
+ * @author Gabrielle Albrecht/ypo253
+ * 
+ * UTSA CS 3443 - Team Project
+ *  Fall 2020
+ */
+
 public class MenuController {  
 	
 	@FXML
@@ -25,62 +33,104 @@ public class MenuController {
 	@FXML
 	private Pane view;
 	@FXML
-	ImageView background;
+	public ImageView background; 
+	@FXML
+	Label label;
+	Stage stage;
 	
+	static WeatherWatch w = new WeatherWatch();
+	
+	/**
+	 * Initialize the MenuContoller
+	 * @throws Exception if initialization fails
+	 */
 	public void initialize(){
 		try{
-			URL fileUrl = Main.class.getResource("/application/view/Forecast.fxml");
-			new FXMLLoader();
-			view = FXMLLoader.load(fileUrl);
-			mainPane.setCenter(view);
-			}catch(Exception e){}
+			w.loadFile();
+			w.analyzeCurrent();
+			w.analyzeOneCall(); 
+			
+			setBackground();
+			
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/Forecast.fxml"));
+			mainPane.setCenter(loader.load());
+		}catch(Exception e){label.setText("An error occured");}
 	}
 	
+	/** 
+	 * @throws Exception for handleButton1Action
+	 */
 	@FXML
 	private void handleButton1Action(ActionEvent event){
+		label.setText("");
 		try{
-			URL fileUrl = Main.class.getResource("/application/view/Forecast.fxml");
-			new FXMLLoader();
-			view = FXMLLoader.load(fileUrl);
-			mainPane.setCenter(view);
-			}catch(Exception e){e.printStackTrace();}
-		
+			setBackground();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/Forecast.fxml"));
+			mainPane.setCenter(loader.load());
+		}catch(Exception e){label.setText("An error occured");}
 	}
 
+	/**
+	 * @throws Exception for handleButton2Action
+	 */
 	@FXML
 	private void handleButton2Action(ActionEvent event){
+		label.setText("");
 		try{
-			URL fileUrl = Main.class.getResource("/application/view/Radar.fxml");
-			new FXMLLoader();
-			view = FXMLLoader.load(fileUrl);
-			mainPane.setCenter(view);
-			}catch(Exception e){}
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/Radar.fxml"));
+			mainPane.setCenter(loader.load());
+		}catch(Exception e){label.setText("An error occured");}
 	}
 	
+	/**
+	 * @throws Exception for handleButton3Action
+	 */
 	@FXML
 	private void handleButton3Action(ActionEvent event){
+		label.setText("");
 		try{
-			URL fileUrl = Main.class.getResource("/application/view/DetailedWeather.fxml");
-			new FXMLLoader();
-			view = FXMLLoader.load(fileUrl);
-			mainPane.setCenter(view);
-			}catch(Exception e){}
+			setBackground();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/DetailedWeather.fxml"));
+			mainPane.setCenter(loader.load());
+		}catch(Exception e){label.setText("An error occured");}
 	}
 	
+	/**
+	 * @throws Exception for handleButton4Action
+	 */
 	@FXML
 	private void handleButton4Action(ActionEvent event){
-		try{
-			URL fileUrl = Main.class.getResource("/application/view/Location.fxml");
-			new FXMLLoader();
-			view = FXMLLoader.load(fileUrl);
-			mainPane.setCenter(view);
-			}catch(Exception e){}
+		label.setText("");
+		try{ 
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/view/Location.fxml"));
+			mainPane.setCenter(loader.load());
+			
+			setBackground();
+			}catch(Exception e){label.setText("An error occured");}
 	} 
 	
-	public void setBackground(String fileName){
-		 System.out.println("Is loaded: " );
-		//	Image image = new Image(fileName);
-		//	 System.out.println("Is loaded: " + image.isError());
-		//	background.setImage(image);
+	/**
+	 * Set the background
+	 */
+	public void setBackground(){
+		label.setText(""); 
+		try{
+			w.loadFile();
+			w.analyzeCurrent();
+			w.analyzeOneCall(); 
+			
+			Icon i = new Icon();
+			i.setIconResult(w.getCurrentWeatherIcon());
+			Image img = new Image(new FileInputStream(i.currWeatherBackground()));
+			background.setImage(img);
+		}catch(Exception e){label.setText("An error occured");}
+	}
+	
+	/**
+	 * All controllers use the same WeatherWatch object
+	 * @return WeatherWatch object
+	 */
+	public WeatherWatch getW(){
+		return MenuController.w;
 	}
 }

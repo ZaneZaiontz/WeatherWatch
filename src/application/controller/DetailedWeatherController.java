@@ -1,11 +1,23 @@
 package application.controller;
 
-import java.io.IOException;
-
+import application.model.Hourly;
 import application.model.WeatherWatch;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+
+/**
+ * This class represents the DetailedWeatherController 
+ * Displays more detailed current weather information
+ * Displays the detailed weather information for the next 48 hours
+ * 
+ * @author Dariel Malave Perez
+ * @author Zane Zaiontz
+ * @author Gabrielle Albrecht/ypo253 
+ * 
+ *  UTSA CS 3443 - Team Project
+ *  Fall 2020
+ */
 
 public class DetailedWeatherController {
 
@@ -30,25 +42,21 @@ public class DetailedWeatherController {
 	@FXML
 	Label hourly;
 	@FXML
-	ListView hourly1;
-	@FXML
-	ListView hourly2;
-	
-	public void initialize() {
-		try {
-			//label.setText("Detailed Weather");
+	ListView<Hourly> hourly1 = new ListView<>();
+
+	/**
+	 * Initializes the DetailedWeatherController
+	 * @throws Exception if initialization fails
+	 */
+	public void initialize() throws Exception{
+			MenuController mc = new MenuController();
+			WeatherWatch w = mc.getW();
 			
-			WeatherWatch w = new WeatherWatch();
 			w.loadFile();
 			cityName.setText(w.getCityName());
 		
 			w.analyzeCurrent();
 			w.analyzeOneCall(); 
-			
-//			for (int i = 0; i < w.getHourlyArray().size(); i++) {
-//				System.out.println(w.getHourlyArray().get(i));
-//				System.out.println(w.getHourlyArray().size());
-//			}
 			
 			cityName.setText(w.getCityName());
 			temp.setText("Current temperature: " + w.getTemp() + "°F");
@@ -59,16 +67,10 @@ public class DetailedWeatherController {
 			weather.setText("Weather: " + w.getWeatherMain());
 			description.setText("Weather description: " + w.getDescription());
 			
-			hourly.setText("Weather data for " + w.getCityName() + " on upcoming days:");
+			hourly.setText("Hourly weather data for " + w.getCityName());
 			
-			for (int i = 0; i < 24; i ++) {
+			for (int i = 0; i < 48; i ++) {
 				hourly1.getItems().add(w.getHourlyArray().get(i));
 			}
-			for (int j = 24; j < 48; j ++) {
-				hourly2.getItems().add(w.getHourlyArray().get(j));
-			}
-		} catch (Exception e) {}
-		
 	}
-
 }

@@ -1,27 +1,56 @@
-package application.controller;
+package application.model;
 
-//import java.io.File;
+
+/**
+ *  This class represents the icon,
+ *  returns the image path for weatherIcon
+ *  returns the image path for background image
+ *  
+ *  @author Gabrielle Albrecht/ypo253 
+ * 
+ *  UTSA CS 3443 - Team Project 
+ *  Fall 2020
+ */
 
 public class Icon {
 	
 	String icon, weatherResult;
 	
+	/**
+	 * Default constructor
+	 */
 	public Icon(){
 		
 	}
 	
+	/**
+	 * 
+	 * @param icon string representing the icon information
+	 */
 	public Icon(String icon){
 		this.icon  = icon;
 	}
 	
+	/**
+	 * Sets the name of the icon
+	 * @param icon to set (String)
+	 */
 	public void setIcon(String icon){
 		this.icon  = icon;
 	}
 	
+	/**
+	 * Gets the name of the icon
+	 * @return icon the name of the icon
+	 */
 	public String getIcon(){
 		return this.icon;
 	}
 	
+	/**
+	 * Sets the weatherResult,
+	 * @param icon the IconResult to set (String)
+	 */
 	public void setIconResult(String icon){
 		if(icon.equals("01d")){
 			this.weatherResult = "clear";
@@ -62,10 +91,18 @@ public class Icon {
 		else { this.weatherResult = "mist";}
 	}
 	
+	/**
+	 * Return the description of the icon
+	 * @return weatherResult the description of the icon
+	 */
 	public String iconResult(){
 		return this.weatherResult;
 	}
 	
+	/**
+	 * Return the image path to the weather icon
+	 * @return path the image path to the weatherIcon
+	 */
 	public String currWeatherIcon(){
 		if(this.weatherResult.equals("clear")){
 			return "images/WeatherIcons/sunny.png";
@@ -98,12 +135,56 @@ public class Icon {
 			return "images/WeatherIcons/storm.png";
 		}
 		else if(this.weatherResult.equals("snow")){
-			return "images/WeatherIcons/cold.png";
+			return "images/WeatherIcons/coldCloud.png";
 		}
 		else if(this.weatherResult.equals("mist")){
 			return "images/WeatherIcons/Mist.png";
 		}
 		else { return "images/WeatherIcons/Mist.png"; }
 	}
-
+	
+	/**
+	 * Return the image path to the weather background
+	 * @return path the image path to the background image
+	 */
+	public String currWeatherBackground(){
+		if(this.weatherResult.equals("clear")){
+			return "images/BackgroundImages/Sunny.png";
+		}
+		else if(this.weatherResult.equals("clear night")){
+			return "images/BackgroundImages/clearNight.png";
+		}
+		else if(this.weatherResult.equals("cloudSunny")){
+			return "images/BackgroundImages/TempBG.png";
+		}
+		else if(this.weatherResult.equals("cloudNight")){
+			return "images/BackgroundImages/TempBG.png";
+		}
+		else if(this.weatherResult.equals("clouds")){
+			return "images/BackgroundImages/TempBG.png";
+		}
+		else if(this.weatherResult.equals("moreclouds")){
+			return "images/BackgroundImages/TempBG.png";
+		} 
+		else if(this.weatherResult.equals("rain")){
+			return "images/BackgroundImages/RainyBackground.jpg";
+		}
+		else if(this.weatherResult.equals("rainSun")){
+			return "images/BackgroundImages/Rain.png";
+		}
+		else if(this.weatherResult.equals("rainNight")){
+			return "images/BackgroundImages/RainyBackground.jpg";
+		}
+		else if(this.weatherResult.equals("thunderstorm")){
+			return "images/BackgroundImages/Thunder.png";
+		}
+		else if(this.weatherResult.equals("snow")){
+			return "images/BackgroundImages/snow.png";
+		}
+		else if(this.weatherResult.equals("mist")){
+			return "images/BackgroundImages/mist.png";
+		}
+		else { return "images/BackgroundImages/Mist.png"; }
+	}
+		
 }
