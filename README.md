@@ -1,4 +1,4 @@
-<center>#READ ME</center>
+#READ ME
 
 
 # WeatherWatch
