@@ -12,7 +12,7 @@ __Home Menu:__
 __Radar Menu: (Issues loading Radar properly into the VDI machine)__
 
 * The radar view is the 2nd option on the top of the app and is an interactive radar map over the users selected city.
-* In the radar view you can see the weather conditions such as Wind, Rain, thunder, temperature in a time laspe in the coming days.
+* In the radar view you can see the weather conditions such as Wind, Rain, thunder, temperature in a time lapse in the coming days.
 
 
 __Detailed Weather Information Menu:__
@@ -39,5 +39,6 @@ __Search Menu:__
  __Installation:__
  * Required for proper functionality 
     * Java SE Development Kit 8
-    * Eclipse Neon - to display the program correctly
+    * Eclipse Neon - to display the program correctly 
+    * Internet required 
     
